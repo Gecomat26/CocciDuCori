@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pesciolini di Elisa</title>
+<title>Pescetti di Elisa</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Orecchini a forma di pesce fatti a mano in pasta Das e Fimo, dipinti con colori acrilici e glassati con resina UV.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,6 +109,7 @@ section{padding-block:clamp(2.5rem,6vw,5rem)}
 .card h3{font-size:1.3rem;font-weight:700}
 .card .sub{color:var(--muted);font-size:.93rem;flex:1}
 .card .row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:.75rem}
+.more{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:2rem;color:var(--muted);font-size:.92rem}
 .price{font:700 1.2rem var(--f-display);font-variant-numeric:tabular-nums}
 
 /* laboratorio */
@@ -127,8 +128,7 @@ section{padding-block:clamp(2.5rem,6vw,5rem)}
 .m-a{grid-column:span 3;aspect-ratio:1/1}
 .m-b{grid-column:span 3;aspect-ratio:1/1}
 .m-c{grid-column:span 6;aspect-ratio:16/8}
-.m-d{grid-column:span 3;aspect-ratio:4/3}
-.m-e{grid-column:span 3;aspect-ratio:4/3}
+.m-d,.m-e,.m-f{grid-column:span 2;aspect-ratio:3/4}
 @media (max-width:860px){.lab .wrap{grid-template-columns:minmax(0,1fr)}}
 
 /* materiali */
@@ -213,7 +213,7 @@ fieldset{border:0;margin:0;padding:0}
 
 <header class="top">
   <div class="wrap bar">
-    <a class="logo" href="#top" aria-label="Pesciolini di Elisa, inizio pagina"><svg class="fish"><use href="#fish"/></svg>Pesciolini <span>di Elisa</span></a>
+    <a class="logo" href="#top" aria-label="Pescetti di Elisa, inizio pagina"><svg class="fish"><use href="#fish"/></svg>Pescetti <span>di Elisa</span></a>
     <nav class="main" aria-label="Sezioni">
       <a href="#orecchini">Orecchini</a>
       <a href="#laboratorio">Come nascono</a>
@@ -259,6 +259,7 @@ fieldset{border:0;margin:0;padding:0}
       </div>
       <div class="chips" role="group" aria-label="Filtra per stile" id="chips"></div>
       <div class="grid" id="grid"></div>
+      <div class="more" id="more"></div>
     </div>
   </section>
 
@@ -283,6 +284,7 @@ fieldset{border:0;margin:0;padding:0}
         <figure class="m-c"><img loading="lazy" src="img/lab-table.jpg" alt="Tanti pesci bianchi ancora da dipingere, allineati su una tavola di legno"><figcaption>Pesci in attesa del colore</figcaption></figure>
         <figure class="m-d"><img loading="lazy" src="img/lab-testa-gialla.jpg" alt="Sei pesci con la testa gialla e un occhio blu"><figcaption>Occhi blu, teste gialle</figcaption></figure>
         <figure class="m-e"><img loading="lazy" src="img/lab-occhi-blu.jpg" alt="Sei pesci bianchi con un grande occhio blu"><figcaption>Primi occhi dipinti</figcaption></figure>
+        <figure class="m-f"><img loading="lazy" src="img/cuore-righe.jpg" alt="Pesce bianco con righe blu e un cuore rosso, dipinto ma ancora senza resina"><figcaption>Dipinto, in attesa della resina</figcaption></figure>
       </div>
     </div>
   </section>
@@ -312,7 +314,7 @@ fieldset{border:0;margin:0;padding:0}
 
 <footer>
   <div class="wrap">
-    <div><a class="logo" href="#top"><svg class="fish"><use href="#fish"/></svg>Pesciolini <span>di Elisa</span></a><p>Orecchini fatti a mano.</p></div>
+    <div><a class="logo" href="#top"><svg class="fish"><use href="#fish"/></svg>Pescetti <span>di Elisa</span></a><p>Orecchini fatti a mano.</p></div>
     <div><strong>Contatti</strong><ul id="contacts"></ul></div>
     <div><strong>Il negozio</strong><ul><li><a href="#orecchini">Orecchini</a></li><li><a href="#laboratorio">Come nascono</a></li><li><a href="#spedizioni">Spedizioni</a></li></ul></div>
   </div>
@@ -335,7 +337,7 @@ fieldset{border:0;margin:0;padding:0}
 const CONFIG = {
   whatsapp: "",            // es. "393331234567" (prefisso senza +). Se vuoto, il pulsante WhatsApp non compare
   email: "",               // es. "ciao@tuodominio.it"
-  instagram: "",           // es. "pesciolini_di_elisa"
+  instagram: "",           // es. "pescetti_di_elisa"
   shippingCost: 3.9,       // euro, spedizione in Italia
   freeShippingFrom: 40,    // euro, spedizione gratuita sopra questa cifra
   payments: ["Bonifico bancario", "PayPal"]
@@ -347,12 +349,10 @@ const PRODUCTS = [
    desc:"Un pesce bianco attraversato da righe blu intenso. Semplice, pulito, di quelli che stanno bene con tutto."},
   {id:"sardina-blu", nome:"Sardina blu", sub:"Blu cobalto con righe bianche", prezzo:10, img:"img/indossato.jpg", cat:["blu"],
    desc:"Blu profondo e righe bianche pennellate a mano. Nella foto lo vedi indossato."},
-  {id:"notte-oro", nome:"Notte d'oro", sub:"Cerchi blu bordati d'oro", prezzo:10, img:"img/notte-oro.jpg", cat:["blu"],
+  {id:"notte-oro", nome:"Notte d'oro", sub:"Cerchi blu bordati d'oro", prezzo:10, img:"img/notte-oro.jpg", cat:["blu","oro"],
    desc:"Corpo bianco lucido con grandi macchie blu notte bordate da una pennellata dorata."},
-  {id:"blu-oro", nome:"Blu e oro", sub:"Blu cobalto con righe dorate", prezzo:10, img:"img/blu-oro.jpg", cat:["blu"],
+  {id:"blu-oro", nome:"Blu e oro", sub:"Blu cobalto con righe dorate", prezzo:10, img:"img/blu-oro.jpg", cat:["blu","oro"],
    desc:"Un pesce blu con la testa bianca e righe e pinne color oro. Il più elegante del banco."},
-  {id:"cuore-righe", nome:"Cuore a righe", sub:"Righe blu e cuore rosso", prezzo:10, img:"img/cuore-righe.jpg", cat:["blu"],
-   desc:"Bianco, quattro righe blu e un cuore rosso proprio dove dovrebbe stare."},
   {id:"arlecchino", nome:"Arlecchino", sub:"Lilla, giallo, azzurro e coda rossa", prezzo:10, img:"img/arlecchino.jpg", cat:["colorati"],
    desc:"Testa lilla, fianchi gialli e azzurri con trattini blu, coda rossa con pennellate bianche. Tanto colore in pochi centimetri."},
   {id:"laguna", nome:"Laguna", sub:"Turchese, coda rossa, occhio bianco", prezzo:10, img:"img/laguna.jpg", cat:["colorati"],
@@ -360,9 +360,82 @@ const PRODUCTS = [
   {id:"cuoricino", nome:"Cuoricino", sub:"Verde lime con cuore rosa", prezzo:10, img:"img/cuoricino.jpg", cat:["verde"],
    desc:"Verde lime acceso e un cuore rosa al centro. Piccolo, allegro, facile da regalare."},
   {id:"foglia-viola", nome:"Foglia viola", sub:"Viola con ramo rosa", prezzo:10, img:"img/foglia-viola.jpg", cat:["verde"],
-   desc:"Viola intenso con un ramo di foglioline rosa disegnato a mano su tutto il corpo."}
+   desc:"Viola intenso con un ramo di foglioline rosa disegnato a mano su tutto il corpo."},
+  /* nuovi pezzi: foto p01-p72 */
+  {"id": "p01", "nome": "Foglia d'oro", "sub": "Bianco con foglia d'oro", "prezzo": 10, "img": "img/p01.jpg", "cat": ["oro"]},
+  {"id": "p02", "nome": "Ramo blu", "sub": "Bianco con rametto blu", "prezzo": 10, "img": "img/p02.jpg", "cat": ["blu"]},
+  {"id": "p03", "nome": "Ametista", "sub": "Viola con ramo lilla", "prezzo": 10, "img": "img/p03.jpg", "cat": ["verde"]},
+  {"id": "p04", "nome": "Marinaio rosso", "sub": "Righe blu, cuoricino e coda rossa", "prezzo": 10, "img": "img/p04.jpg", "cat": ["blu", "colorati"]},
+  {"id": "p05", "nome": "Oro su bianco", "sub": "Bianco con foglia d'oro al centro", "prezzo": 10, "img": "img/p05.jpg", "cat": ["oro"]},
+  {"id": "p06", "nome": "Maiolica", "sub": "Testa blu e fiore blu e nero", "prezzo": 10, "img": "img/p06.jpg", "cat": ["blu"]},
+  {"id": "p07", "nome": "Notte e rametto", "sub": "Blu notte con ramo bianco", "prezzo": 10, "img": "img/p07.jpg", "cat": ["blu"]},
+  {"id": "p08", "nome": "Luna d'oro", "sub": "Viola scuro con luna dorata", "prezzo": 10, "img": "img/p08.jpg", "cat": ["oro"]},
+  {"id": "p09", "nome": "Turchese a pois", "sub": "Turchese, pois bianchi e testa corallo", "prezzo": 10, "img": "img/p09.jpg", "cat": ["colorati"]},
+  {"id": "p10", "nome": "Pois scuri", "sub": "Bianco con pois grigio scuro", "prezzo": 10, "img": "img/p10.jpg", "cat": ["pastello"]},
+  {"id": "p11", "nome": "Maiolica dorata", "sub": "Bianco con decori blu e linee dorate", "prezzo": 10, "img": "img/p11.jpg", "cat": ["blu", "oro"]},
+  {"id": "p12", "nome": "Sabbia e blu", "sub": "Testa bianca con ventaglio blu e coda dorata", "prezzo": 10, "img": "img/p12.jpg", "cat": ["blu", "oro"]},
+  {"id": "p13", "nome": "Corallo stellato", "sub": "Testa corallo e corpo sabbia con stelline", "prezzo": 10, "img": "img/p13.jpg", "cat": ["colorati"]},
+  {"id": "p14", "nome": "Girasole", "sub": "Giallo senape con puntini dorati", "prezzo": 10, "img": "img/p14.jpg", "cat": ["colorati"]},
+  {"id": "p15", "nome": "Spiaggia dorata", "sub": "Bianco con glitter oro", "prezzo": 10, "img": "img/p15.jpg", "cat": ["oro"]},
+  {"id": "p16", "nome": "Conchiglia blu", "sub": "Bianco con spirali blu", "prezzo": 10, "img": "img/p16.jpg", "cat": ["blu"]},
+  {"id": "p17", "nome": "Cuori d'oro", "sub": "Grigio scuro con cuori dorati", "prezzo": 10, "img": "img/p17.jpg", "cat": ["oro"]},
+  {"id": "p18", "nome": "Mosaico blu", "sub": "Bianco con macchie blu e bordo dorato", "prezzo": 10, "img": "img/p18.jpg", "cat": ["blu", "oro"]},
+  {"id": "p19", "nome": "Occhi blu", "sub": "Bianco con testa gialla e occhio blu", "prezzo": 10, "img": "img/p19.jpg", "cat": ["colorati"]},
+  {"id": "p20", "nome": "Mare profondo", "sub": "Petrolio con bordo dorato", "prezzo": 10, "img": "img/p20.jpg", "cat": ["verde", "oro"]},
+  {"id": "p21", "nome": "Aranciata", "sub": "Arancio con bordo dorato", "prezzo": 10, "img": "img/p21.jpg", "cat": ["colorati"]},
+  {"id": "p22", "nome": "Anguria", "sub": "Rosso con semi neri e coda verde", "prezzo": 10, "img": "img/p22.jpg", "cat": ["colorati"]},
+  {"id": "p23", "nome": "Petrolio e oro", "sub": "Grigio petrolio con coda dorata", "prezzo": 10, "img": "img/p23.jpg", "cat": ["oro"]},
+  {"id": "p24", "nome": "Righe oltremare", "sub": "Bianco e blu a righe larghe", "prezzo": 10, "img": "img/p24.jpg", "cat": ["blu"]},
+  {"id": "p25", "nome": "Oro e verde acqua", "sub": "Dorato con coda verde acqua", "prezzo": 10, "img": "img/p25.jpg", "cat": ["oro", "verde"]},
+  {"id": "p26", "nome": "Mimosa", "sub": "Bianco con fiori gialli e rametti verdi", "prezzo": 10, "img": "img/p26.jpg", "cat": ["verde"]},
+  {"id": "p27", "nome": "Rubino", "sub": "Rosso con bordo oro", "prezzo": 10, "img": "img/p27.jpg", "cat": ["colorati"]},
+  {"id": "p28", "nome": "Frecce lavanda", "sub": "Lavanda con frecce viola", "prezzo": 10, "img": "img/p28.jpg", "cat": ["pastello", "verde"]},
+  {"id": "p29", "nome": "Maiolica glitter", "sub": "Testa decorata e coda glitter oro", "prezzo": 10, "img": "img/p29.jpg", "cat": ["oro", "blu"]},
+  {"id": "p30", "nome": "Limone", "sub": "Giallo a pois con coda arancio", "prezzo": 10, "img": "img/p30.jpg", "cat": ["colorati"]},
+  {"id": "p31", "nome": "Rosa quarzo", "sub": "Rosa con coda dorata", "prezzo": 10, "img": "img/p31.jpg", "cat": ["pastello", "oro"]},
+  {"id": "p32", "nome": "Foresta", "sub": "Verde menta con coda blu", "prezzo": 10, "img": "img/p32.jpg", "cat": ["verde"]},
+  {"id": "p33", "nome": "Cappuccino", "sub": "Righe beige e rosa", "prezzo": 10, "img": "img/p33.jpg", "cat": ["pastello"]},
+  {"id": "p34", "nome": "Marinaio", "sub": "Bianco con righe blu, testa e coda rosse", "prezzo": 10, "img": "img/p34.jpg", "cat": ["blu", "colorati"]},
+  {"id": "p35", "nome": "Notte con coda d'oro", "sub": "Blu grigio con coda dorata", "prezzo": 10, "img": "img/p35.jpg", "cat": ["blu", "oro"]},
+  {"id": "p36", "nome": "Occhio rosa", "sub": "Rosa con occhio bianco", "prezzo": 10, "img": "img/p36.jpg", "cat": ["pastello"]},
+  {"id": "p37", "nome": "Acquamarina", "sub": "Turchese con coda rossa e cuoricino", "prezzo": 10, "img": "img/p37.jpg", "cat": ["colorati"]},
+  {"id": "p38", "nome": "Righe verdi", "sub": "Bianco con righe verde bosco", "prezzo": 10, "img": "img/p38.jpg", "cat": ["verde"]},
+  {"id": "p39", "nome": "Rete blu", "sub": "Blu con decori a rete bianchi", "prezzo": 10, "img": "img/p39.jpg", "cat": ["blu"]},
+  {"id": "p40", "nome": "Cuore lime", "sub": "Verde lime con cuore rosa", "prezzo": 10, "img": "img/p40.jpg", "cat": ["verde", "pastello"]},
+  {"id": "p41", "nome": "Indaco", "sub": "Indaco lucido con bordo dorato", "prezzo": 10, "img": "img/p41.jpg", "cat": ["blu"]},
+  {"id": "p42", "nome": "Smeraldo", "sub": "Verde smeraldo con occhio bianco", "prezzo": 10, "img": "img/p42.jpg", "cat": ["verde"]},
+  {"id": "p43", "nome": "Leopardo", "sub": "Crema con macchie marroni", "prezzo": 10, "img": "img/p43.jpg", "cat": ["pastello"]},
+  {"id": "p44", "nome": "Onde blu", "sub": "Azzurro e blu con onde", "prezzo": 10, "img": "img/p44.jpg", "cat": ["blu"]},
+  {"id": "p45", "nome": "Tramonto", "sub": "Giallo, rosso e azzurro a fasce", "prezzo": 10, "img": "img/p45.jpg", "cat": ["colorati"]},
+  {"id": "p46", "nome": "Righe petrolio", "sub": "Petrolio con righe bianche e blu", "prezzo": 10, "img": "img/p46.jpg", "cat": ["blu", "verde"]},
+  {"id": "p47", "nome": "Crema", "sub": "Crema con occhio bianco", "prezzo": 10, "img": "img/p47.jpg", "cat": ["pastello"]},
+  {"id": "p48", "nome": "Mora", "sub": "Viola mora con coda rosa", "prezzo": 10, "img": "img/p48.jpg", "cat": ["verde"]},
+  {"id": "p49", "nome": "Rosa e turchese", "sub": "Turchese con testa rosa", "prezzo": 10, "img": "img/p49.jpg", "cat": ["colorati"]},
+  {"id": "p50", "nome": "Menta a righe", "sub": "Verde con righe bianche", "prezzo": 10, "img": "img/p50.jpg", "cat": ["verde"]},
+  {"id": "p51", "nome": "Pop", "sub": "Beige e azzurro con trattini blu e coda rossa", "prezzo": 10, "img": "img/p51.jpg", "cat": ["colorati"]},
+  {"id": "p52", "nome": "Orchidea", "sub": "Fucsia con cuoricini dorati", "prezzo": 10, "img": "img/p52.jpg", "cat": ["verde", "oro"]},
+  {"id": "p53", "nome": "Fiorellino", "sub": "Azzurro con un fiore", "prezzo": 10, "img": "img/p53.jpg", "cat": ["blu"]},
+  {"id": "p54", "nome": "Albicocca", "sub": "Arancio a righe con testa lilla", "prezzo": 10, "img": "img/p54.jpg", "cat": ["colorati"]},
+  {"id": "p55", "nome": "Arancio a pois", "sub": "Bianco con pois e coda arancio", "prezzo": 10, "img": "img/p55.jpg", "cat": ["colorati"]},
+  {"id": "p56", "nome": "Blu a pois d'oro", "sub": "Blu con pois dorati", "prezzo": 10, "img": "img/p56.jpg", "cat": ["blu", "oro"]},
+  {"id": "p57", "nome": "Cielo", "sub": "Azzurro con coda dorata", "prezzo": 10, "img": "img/p57.jpg", "cat": ["blu", "oro"]},
+  {"id": "p58", "nome": "Blu e corallo", "sub": "Blu con coda corallo", "prezzo": 10, "img": "img/p58.jpg", "cat": ["blu"]},
+  {"id": "p59", "nome": "Indaco a rametti", "sub": "Blu con rametti chiari", "prezzo": 10, "img": "img/p59.jpg", "cat": ["blu"]},
+  {"id": "p60", "nome": "Prugna", "sub": "Fucsia con occhio e coda dorata", "prezzo": 10, "img": "img/p60.jpg", "cat": ["oro", "verde"]},
+  {"id": "p61", "nome": "Acqua a pois", "sub": "Azzurro con pois blu", "prezzo": 10, "img": "img/p61.jpg", "cat": ["blu"]},
+  {"id": "p62", "nome": "Bastoncino", "sub": "Bianco con righe rosse e verdi e coda arancio", "prezzo": 10, "img": "img/p62.jpg", "cat": ["colorati"]},
+  {"id": "p63", "nome": "Rosa antico", "sub": "Rosa con coda rossa", "prezzo": 10, "img": "img/p63.jpg", "cat": ["pastello"]},
+  {"id": "p64", "nome": "Cuore bianco", "sub": "Bianco con cuore rosa", "prezzo": 10, "img": "img/p64.jpg", "cat": ["pastello"]},
+  {"id": "p65", "nome": "Cielo a puntini", "sub": "Azzurro con puntini e coda gialla", "prezzo": 10, "img": "img/p65.jpg", "cat": ["blu", "colorati"]},
+  {"id": "p66", "nome": "Argento", "sub": "Azzurro con testa e coda argento", "prezzo": 10, "img": "img/p66.jpg", "cat": ["blu"]},
+  {"id": "p67", "nome": "Righe e cuore", "sub": "Bianco e blu con cuore e coda rossi", "prezzo": 10, "img": "img/p67.jpg", "cat": ["blu"]},
+  {"id": "p68", "nome": "Corallo", "sub": "Rosso con ramo di corallo", "prezzo": 10, "img": "img/p68.jpg", "cat": ["colorati"]},
+  {"id": "p69", "nome": "Cielo stellato", "sub": "Blu notte con stelle dorate", "prezzo": 10, "img": "img/p69.jpg", "cat": ["blu", "oro"]},
+  {"id": "p70", "nome": "Petrolio a pois", "sub": "Petrolio con pois neri e coda rossa", "prezzo": 10, "img": "img/p70.jpg", "cat": ["colorati"]},
+  {"id": "p71", "nome": "Tigre blu", "sub": "Blu con righe dorate", "prezzo": 10, "img": "img/p71.jpg", "cat": ["blu", "oro"]},
+  {"id": "p72", "nome": "Stellina", "sub": "Bianco con righe blu notte e stella gialla", "prezzo": 10, "img": "img/p72.jpg", "cat": ["blu"]}
 ];
-const FILTERS = [["tutti","Tutti"],["blu","Blu e oro"],["colorati","Colorati"],["verde","Verde e viola"]];
+const FILTERS = [["tutti","Tutti"],["blu","Blu e bianco"],["oro","Oro e glitter"],["colorati","Colorati"],["pastello","Rosa e pastello"],["verde","Verdi e viola"]];
 const SPECS = [
   "Pendente in pasta Das o Fimo, decorato a mano con colori acrilici",
   "Glassato con resina UV, lucido e resistente",
@@ -375,6 +448,7 @@ const $ = s => document.querySelector(s);
 const eur = n => new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR"}).format(n);
 const byId = id => PRODUCTS.find(p => p.id === id);
 const fishSvg = (cls="") => `<svg class="fish ${cls}"><use href="#fish"/></svg>`;
+const PAGE = 12; let shown = PAGE;
 let cart = [], filter = "tutti", view = "cart", lastFocus = null, order = null;
 try { cart = (JSON.parse(localStorage.getItem("pdE-cart")||"[]")).filter(id => byId(id)); } catch(e){ cart = []; }
 const save = () => { try { localStorage.setItem("pdE-cart", JSON.stringify(cart)); } catch(e){} };
@@ -392,7 +466,8 @@ function renderChips(){
   $("#chips").innerHTML = FILTERS.map(([k,l]) => `<button class="chip" data-action="filter" data-k="${k}" aria-pressed="${k===filter}">${l}</button>`).join("");
 }
 function renderGrid(){
-  const list = PRODUCTS.filter(p => filter==="tutti" || p.cat.includes(filter));
+  const all = PRODUCTS.filter(p => filter==="tutti" || p.cat.includes(filter));
+  const list = all.slice(0,shown);
   $("#grid").innerHTML = list.map(p => {
     const inCart = cart.includes(p.id);
     return `<article class="card">
@@ -405,6 +480,7 @@ function renderGrid(){
         <button class="btn sm ${inCart?"in-cart":""}" data-action="add" data-id="${p.id}" ${inCart?"disabled":""}>${inCart?"Nel carrello":"Aggiungi"}</button></div>
       </div></article>`;
   }).join("");
+  $("#more").innerHTML = all.length>shown ? `<span>Stai vedendo ${list.length} di ${all.length} paia</span><button class="btn ghost" data-action="more">Mostra altri pesci</button>` : (all.length>PAGE?`<span>Hai visto tutti i ${all.length} paia</span>`:"");
 }
 
 /* ---------- Scheda prodotto ---------- */
@@ -415,7 +491,7 @@ function openProduct(id){
    <div class="in"><div class="pic"><img src="${p.img}" alt="Orecchini ${p.nome}"></div>
    <div class="info"><p class="eyebrow">Pezzo unico</p><h2 id="m-title">${p.nome}</h2>
    <p class="price" style="font-size:1.6rem">${eur(p.prezzo)}</p>
-   <p class="desc">${p.desc}</p>
+   <p class="desc">${p.desc||(p.sub+". Dipinto a mano e glassato con resina UV: un pezzo unico.")}</p>
    <ul class="specs">${SPECS.map(s=>`<li>${fishSvg()}<span>${s}</span></li>`).join("")}</ul>
    <button class="btn ${inCart?"in-cart":""}" data-action="add" data-id="${p.id}" ${inCart?"disabled":""}>${inCart?"Già nel carrello":"Aggiungi al carrello"}</button></div></div>`;
   openLayer("modal");
@@ -514,7 +590,8 @@ function openCart(){ view = cart.length?"cart":"cart"; renderDrawer(); openLayer
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-action]"); if(!b) return;
   const a=b.dataset.action, id=b.dataset.id;
-  if(a==="filter"){ filter=b.dataset.k; renderChips(); renderGrid(); }
+  if(a==="filter"){ filter=b.dataset.k; shown=PAGE; renderChips(); renderGrid(); }
+  else if(a==="more"){ shown+=PAGE; renderGrid(); }
   else if(a==="open-product") openProduct(id);
   else if(a==="add") addToCart(id);
   else if(a==="remove") removeFromCart(id);
