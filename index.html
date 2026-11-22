@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>CosiDuCori – orecchini e cioccoline fatti a mano</title>
+<title>CocciDuCori – Piccoli pezzi di felicità</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Orecchini a forma di pesce fatti a mano in pasta Das e Fimo, dipinti con colori acrilici e glassati con resina UV.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +57,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:1.5rem;min-height:68px}
 .logo{display:flex;align-items:center;gap:.6rem;font:800 1.25rem/1 var(--f-display);text-decoration:none;color:var(--cobalt)}
-.logo span{color:var(--ink)}
+.logo .lt{display:flex;flex-direction:column;gap:.18rem;line-height:1}
+.logo .lt b{font-weight:800;color:var(--cobalt)}
+.logo .lt i{font-style:normal;color:var(--ink);font-weight:800}
+.logo .lt{display:block}
+.paybox{border:1px solid var(--line);border-radius:14px;padding:1rem;margin:0 0 1rem}
+.paybox h3{font-size:1rem;margin:0 0 .5rem}.paybox p{margin:0 0 .8rem;overflow-wrap:anywhere}
+.sumd summary{cursor:pointer;font-weight:600;margin-bottom:.5rem}
+.logo .lt small{display:block;font:500 .66rem/1.1 var(--f-body,inherit);letter-spacing:.02em;color:var(--ink);opacity:.7;margin-top:.22rem}
 .logo .fish{width:2.1rem;height:1.05rem}
 nav.main{display:flex;gap:1.5rem;margin-left:auto;font-weight:500}
 nav.main a{text-decoration:none;color:var(--muted);padding:.4rem 0}
@@ -248,7 +255,7 @@ footer .legal a{color:inherit}
 
 <header class="top">
   <div class="wrap bar">
-    <a class="logo" href="#top" aria-label="CosiDuCori, inizio pagina"><svg class="fish"><use href="#fish"/></svg>Cosi<span>DuCori</span></a>
+    <a class="logo" href="#top" aria-label="CocciDuCori, inizio pagina"><svg class="fish"><use href="#fish"/></svg><span class="lt"><b>Cocci</b><i>DuCori</i><small>Piccoli pezzi di felicità</small></span></a>
     <nav class="main" aria-label="Sezioni">
       <div class="dd"><button class="dd-btn" aria-expanded="false" aria-controls="dd-pesci">Pescetti <span aria-hidden="true">▾</span></button>
         <div class="dd-menu" id="dd-pesci" hidden><a href="#orecchini">Gli orecchini</a><a href="#laboratorio">Come nascono i pescetti</a><a href="#materiali">Materiali dei pescetti</a></div></div>
@@ -434,11 +441,11 @@ footer .legal a{color:inherit}
 
 <footer>
   <div class="wrap">
-    <div><a class="logo" href="#top"><svg class="fish"><use href="#fish"/></svg>Cosi<span>DuCori</span></a><p>Orecchini e cioccoline fatti a mano.<br>www.cosiducori.it</p></div>
+    <div><a class="logo" href="#top"><svg class="fish"><use href="#fish"/></svg><span class="lt"><b>Cocci</b><i>DuCori</i><small>Piccoli pezzi di felicità</small></span></a><p>Orecchini e cioccoline fatti a mano.<br>www.cocciducori.it</p></div>
     <div><strong>Contatti</strong><ul id="contacts"></ul></div>
     <div><strong>Il negozio</strong><ul><li><a href="#orecchini">Pescetti (orecchini)</a></li><li><a href="#laboratorio">Come nascono i pescetti</a></li><li><a href="#cioccoline">Cioccoline</a></li><li><a href="#cioccoline-come">Come nascono le cioccoline</a></li><li><a href="#spedizioni">Spedizioni</a></li><li><a href="info-legali.html#condizioni">Condizioni di vendita</a></li><li><a href="info-legali.html#privacy">Privacy</a></li></ul></div>
   </div>
-  <div class="wrap legal"><p>Il marchio CosiDuCori è gestito da Daca S.r.l. · Via Macello 2, 30035 Mirano (VE) · P.IVA 04645100274 · REA VE 436546 · <a href="info-legali.html#chi-vende">Dati del venditore</a></p></div>
+  <div class="wrap legal"><p>Il marchio CocciDuCori è gestito da Daca S.r.l. · Via Macello 2, 30035 Mirano (VE) · P.IVA 04645100274 · REA VE 436546 · <a href="info-legali.html#chi-vende">Dati del venditore</a></p></div>
 </footer>
 
 <!-- scheda prodotto -->
@@ -458,10 +465,14 @@ footer .legal a{color:inherit}
 const CONFIG = {
   whatsapp: "",            // es. "393331234567" (prefisso senza +). Se vuoto, il pulsante WhatsApp non compare
   email: "",               // es. "ciao@tuodominio.it"
-  instagram: "",           // es. "cosiducori"
+  instagram: "",           // es. "cocciducori"
   shippingCost: 3.9,       // euro, spedizione in Italia
   freeShippingFrom: 40,    // euro, spedizione gratuita sopra questa cifra
-  payments: ["Bonifico bancario", "PayPal"]
+  web3formsKey: "e87e129a-64a5-4c2c-9c6c-708684ec7bdb",        // chiave gratuita di web3forms.com (arriva via email). Se vuota, l'ordine si invia a mano (copia/WhatsApp)
+  paypalMe: "",            // es. "cocciducori" (da paypal.me/cocciducori). Se vuoto, i dati PayPal li scrivi tu al cliente
+  iban: "",                // IBAN di Daca S.r.l. per il bonifico. Se vuoto, i dati del bonifico li scrivi tu al cliente
+  ibanHolder: "Daca S.r.l.",
+  payments: ["PayPal", "Bonifico bancario"]
 };
 
 /* ---------- Catalogo: un oggetto per ogni paio ---------- */
@@ -710,22 +721,29 @@ function renderDrawer(){
         ${CONFIG.payments.map((m,i)=>`<label class="opt"><input type="radio" name="pag" value="${m}" ${i===0?"checked":""}>${m}</label>`).join("")}</fieldset>
       <div class="fld"><label for="f-note">Note (facoltativo)</label><textarea id="f-note" name="note" placeholder="Ad esempio: è un regalo"></textarea></div>
       <div class="fld"><label for="f-fatt">Dati per la fattura (facoltativo)</label><textarea id="f-fatt" name="fatt" placeholder="Nome o ragione sociale, codice fiscale o partita IVA, indirizzo"></textarea></div>
-      <p class="note">Il totale comprende l'IVA e la spedizione. Il pagamento non avviene online: dopo l'ordine ricevi i dati per pagare e la conferma della spedizione. Ogni paio è unico: se è già stato venduto ti avviso e ti rimborso. Per cioccoline e set, se il tessuto è finito ti propongo un'alternativa o ti rimborso.</p>
+      <p class="note">Il totale comprende l'IVA e la spedizione. Il pagamento non avviene sul sito: dopo l'ordine ti mostriamo come pagare con PayPal o bonifico. L'ordine è confermato alla ricezione del pagamento. Ogni paio è unico: se è già stato venduto ti avviso e ti rimborso. Per cioccoline e set, se il tessuto è finito ti propongo un'alternativa o ti rimborso.</p>
       <label class="opt"><input type="checkbox" name="acc" value="si" required>Ho letto e accetto le&nbsp;<a href="info-legali.html#condizioni" target="_blank" rel="noopener">condizioni di vendita</a>, compreso il diritto di recesso di 14 giorni.</label>
       <p class="note">Usiamo i tuoi dati solo per gestire l'ordine: <a href="info-legali.html#privacy" target="_blank" rel="noopener">informativa privacy</a>.</p>
     </form>`;
     foot.innerHTML = `<div class="tot big"><span>Totale (IVA inclusa)</span><span>${eur(t.tot)}</span></div>
-      <button class="btn" type="submit" form="co">Conferma l'ordine e paga dopo</button>
+      <button class="btn" type="submit" form="co">Invia l'ordine</button>
       <button class="btn ghost sm" data-action="back">Torna al carrello</button>`;
     const f=$("#co"); f.addEventListener("submit", submitOrder);
   } else {
     $("#d-title").textContent="Ordine pronto";
     const wa = CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(order.text)}` : "";
+    const sent = order.status==="sent";
+    const intro = sent
+      ? `Ho ricevuto l'ordine <strong>${order.num}</strong> e ti scrivo a breve all'email che hai indicato${CONFIG.email?` (per domande: <strong>${CONFIG.email}</strong>)`:""}. L'ordine è confermato quando ricevo il pagamento.`
+      : `${order.status==="failed"?"L'invio automatico non è riuscito. ":""}L'ordine <strong>${order.num}</strong> non è ancora stato inviato: ${wa?"mandamelo su WhatsApp":"copia il riepilogo e mandamelo"}${CONFIG.email?` o scrivi a <strong>${CONFIG.email}</strong>`:""}.`;
     body.innerHTML = `<div class="ok">${fishSvg()}Grazie, ${order.nome.split(" ")[0]}!</div>
-      <p class="note" style="margin-bottom:1rem">L'ordine <strong>${order.num}</strong> non è ancora stato inviato: ${wa?"mandamelo su WhatsApp":"copia il riepilogo e mandamelo"}${CONFIG.email?` o scrivi a <strong>${CONFIG.email}</strong>`:""}. Ti rispondo con i dati per il pagamento e blocco i tuoi pesci.</p>
-      <pre class="summary" id="sum"></pre>`;
+      <p class="note" style="margin-bottom:1rem">${intro}</p>
+      ${payBox(order)}
+      <details class="sumd"><summary>Riepilogo dell'ordine</summary><pre class="summary" id="sum"></pre></details>`;
     $("#sum").textContent = order.text;
-    foot.innerHTML = `${wa?`<a class="btn" href="${wa}" target="_blank" rel="noopener">Invia su WhatsApp</a>`:""}
+    foot.innerHTML = sent
+      ? `<button class="btn" data-action="done">Chiudi</button>`
+      : `${wa?`<a class="btn" href="${wa}" target="_blank" rel="noopener">Invia su WhatsApp</a>`:""}
       <button class="btn ${wa?"ghost":""}" data-action="copy">Copia il riepilogo</button>
       <button class="btn ghost sm" data-action="done">Ho inviato l'ordine</button>`;
   }
@@ -735,11 +753,31 @@ function submitOrder(e){
   const d = Object.fromEntries(new FormData(e.target).entries());
   const t = totals();
   const now = new Date(), pad = n=>String(n).padStart(2,"0");
-  const num = "PE-"+String(now.getFullYear()).slice(2)+pad(now.getMonth()+1)+pad(now.getDate())+"-"+Math.floor(100+Math.random()*900);
+  const num = "CDC-"+String(now.getFullYear()).slice(2)+pad(now.getMonth()+1)+pad(now.getDate())+"-"+Math.floor(100+Math.random()*900);
   const rows = cart.map(id=>`• ${byId(id).nome} — ${eur(byId(id).prezzo)}`).join("\n");
-  const text = `Ciao! Vorrei ordinare da CosiDuCori (Daca S.r.l., P.IVA 04645100274) — ordine ${num}:\n\n${rows}\n\nSubtotale: ${eur(t.sub)}\nSpedizione: ${t.ship?eur(t.ship):"gratis"}\nTotale (IVA inclusa): ${eur(t.tot)}\n\nNome: ${d.nome}\nEmail: ${d.email}${d.tel?"\nTelefono: "+d.tel:""}\nIndirizzo: ${d.ind}, ${d.cap} ${d.citta} (${d.prov.toUpperCase()})\nPagamento: ${d.pag}${d.note?"\nNote: "+d.note:""}${d.fatt?"\nDati per la fattura: "+d.fatt.replace(/\n/g," – "):""}\n\nHo letto e accetto le condizioni di vendita, compreso il diritto di recesso di 14 giorni.`;
-  order = {num, nome:d.nome, text};
-  view="done"; renderDrawer(); $("#d-body").scrollTop=0;
+  const text = `Ciao! Vorrei ordinare da CocciDuCori (Daca S.r.l., P.IVA 04645100274) — ordine ${num}:\n\n${rows}\n\nSubtotale: ${eur(t.sub)}\nSpedizione: ${t.ship?eur(t.ship):"gratis"}\nTotale (IVA inclusa): ${eur(t.tot)}\n\nNome: ${d.nome}\nEmail: ${d.email}${d.tel?"\nTelefono: "+d.tel:""}\nIndirizzo: ${d.ind}, ${d.cap} ${d.citta} (${d.prov.toUpperCase()})\nPagamento: ${d.pag}${d.note?"\nNote: "+d.note:""}${d.fatt?"\nDati per la fattura: "+d.fatt.replace(/\n/g," – "):""}\n\nHo letto e accetto le condizioni di vendita, compreso il diritto di recesso di 14 giorni.`;
+  order = {num, nome:d.nome, text, pag:d.pag, tot:t.tot, status:"manual"};
+  const btn=document.querySelector('button[type=submit][form=co]');
+  const finish=()=>{ view="done"; renderDrawer(); $("#d-body").scrollTop=0; };
+  if(!CONFIG.web3formsKey){ finish(); return; }
+  if(btn){ btn.disabled=true; btn.textContent="Invio in corso…"; }
+  fetch("https://api.web3forms.com/submit",{
+    method:"POST", headers:{"Content-Type":"application/json",Accept:"application/json"},
+    body:JSON.stringify({access_key:CONFIG.web3formsKey, subject:`Nuovo ordine ${num} — ${d.nome}`, from_name:"CocciDuCori", name:d.nome, email:d.email, message:text})
+  }).then(r=>r.json()).then(j=>{ order.status = j&&j.success ? "sent" : "failed"; finish(); })
+    .catch(()=>{ order.status="failed"; finish(); });
+}
+function payBox(o){
+  const imp = o.tot.toFixed(2).replace(".",",")+" €";
+  if(o.pag==="PayPal"){
+    if(!CONFIG.paypalMe) return `<p class="note">Ti scrivo io il link PayPal per pagare ${imp}.</p>`;
+    const handle = CONFIG.paypalMe.replace(/^https?:\/\/(www\.)?paypal\.me\//,"").replace(/\/+$/,"");
+    return `<div class="paybox"><h3>Come pagare con PayPal</h3><p>Importo: <strong>${imp}</strong>. Nel messaggio di pagamento scrivi il numero ordine <strong>${o.num}</strong>.</p>
+      <a class="btn" href="https://www.paypal.me/${encodeURIComponent(handle)}/${o.tot.toFixed(2)}EUR" target="_blank" rel="noopener">Paga ${imp} con PayPal</a></div>`;
+  }
+  if(!CONFIG.iban) return `<p class="note">Ti scrivo io i dati per il bonifico di ${imp}.</p>`;
+  return `<div class="paybox"><h3>Come pagare con bonifico</h3>
+    <p>Intestatario: <strong>${CONFIG.ibanHolder}</strong><br>IBAN: <strong>${CONFIG.iban}</strong><br>Importo: <strong>${imp}</strong><br>Causale: <strong>Ordine ${o.num}</strong></p></div>`;
 }
 function openCart(){ view = cart.length?"cart":"cart"; renderDrawer(); openLayer("drawer"); }
 
@@ -797,7 +835,7 @@ document.addEventListener("click", e => {
 
 /* ---------- Testi che dipendono dalle impostazioni ---------- */
 $("#ship-p").textContent = `${eur(CONFIG.shippingCost)} per ordine, gratis da ${eur(CONFIG.freeShippingFrom)}.`;
-$("#pay-p").textContent = `${CONFIG.payments.join(" o ")}. Ti scrivo i dati dopo il tuo ordine.`;
+$("#pay-p").textContent = `${CONFIG.payments.join(" o ")}. Dopo l'ordine ti mostriamo come pagare; l'ordine è confermato alla ricezione del pagamento.`;
 (function(){
   const c=[];
   if(CONFIG.email) c.push(`<li>${CONFIG.email}</li>`);
