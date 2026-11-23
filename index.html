@@ -128,12 +128,6 @@ nav.main .dd-menu a:hover{background:var(--tint)}
 @media (max-width:560px){ .tiles{grid-template-columns:minmax(0,1fr)} .tile{aspect-ratio:1/1} }
 @media (prefers-reduced-motion:reduce){ .tile img{transition:none} }
 
-/* banco di pesci (divisore) */
-.shoal{display:flex;justify-content:space-between;gap:.5rem;padding-block:1.25rem;overflow:hidden}
-.shoal .fish{width:2.6rem;height:1.3rem;flex:none}
-.shoal .fish:nth-child(even){transform:scaleX(-1) translateY(6px)}
-.shoal .fish:nth-child(3n){transform:translateY(-5px)}
-@media (max-width:640px){.shoal .fish:nth-child(n+8){display:none}}
 
 /* negozio */
 section{padding-block:clamp(2.5rem,6vw,5rem)}
@@ -335,8 +329,6 @@ footer .legal a{color:inherit}
       </div>
     </div>
   </section>
-
-  <div class="wrap shoal" aria-hidden="true" id="shoal"></div>
 
   <section id="orecchini">
     <div class="wrap">
@@ -641,8 +633,6 @@ function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on
 
 /* ---------- Banco di pesci decorativo ---------- */
 (function(){
-  const cols=["var(--cobalt)","var(--coral)","var(--gold)","#2FA7A0","#8AB82F","#8A4FD0","var(--cobalt)","var(--coral)","var(--gold)","#2FA7A0","#8AB82F","#8A4FD0"];
-  $("#shoal").innerHTML = cols.map(c=>`<svg class="fish" style="color:${c}"><use href="#fish"/></svg>`).join("");
 })();
 
 /* ---------- Cioccoline ---------- */
