@@ -61,11 +61,12 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backgroun
 .logo .lt b{font-weight:800;color:var(--cobalt)}
 .logo .lt i{font-style:normal;color:var(--ink);font-weight:800}
 .logo .lt{display:block}
+.opt.acc{align-items:flex-start}.opt.acc input{margin-top:.2rem;flex:none}.opt.acc span{display:block;line-height:1.45}
 .paybox{border:1px solid var(--line);border-radius:14px;padding:1rem;margin:0 0 1rem}
 .paybox h3{font-size:1rem;margin:0 0 .5rem}.paybox p{margin:0 0 .8rem;overflow-wrap:anywhere}
 .sumd summary{cursor:pointer;font-weight:600;margin-bottom:.5rem}
 .logo .lt small{display:block;font:500 .66rem/1.1 var(--f-body,inherit);letter-spacing:.02em;color:var(--ink);opacity:.7;margin-top:.22rem}
-.logo .fish{width:2.1rem;height:1.05rem}
+.logo .mark{width:2.6rem;height:2.6rem;flex:none}
 nav.main{display:flex;gap:1.5rem;margin-left:auto;font-weight:500}
 nav.main a{text-decoration:none;color:var(--muted);padding:.4rem 0}
 nav.main a:hover{color:var(--ink)}
@@ -79,7 +80,7 @@ nav.main a:hover{color:var(--ink)}
 nav.main .dd-menu a{padding:.65rem .75rem;border-radius:8px;color:var(--ink)}
 nav.main .dd-menu a:hover{background:var(--tint)}
 @media (max-width:760px){.bar{flex-wrap:wrap;row-gap:0;padding-bottom:.25rem}nav.main{order:3;width:100%;margin-left:0;gap:1.25rem;border-top:1px solid var(--line);padding-top:.15rem}.dd-menu{left:0}.cart-btn{margin-left:auto}}
-@media (max-width:480px){.bar{gap:.75rem}.logo{font-size:1.1rem}.logo .fish{width:1.6rem}.cart-btn{padding:0 .8rem}.cart-btn .cl{display:none}}
+@media (max-width:480px){.bar{gap:.75rem}.logo{font-size:1.1rem}.logo .mark{width:2.2rem;height:2.2rem}.cart-btn{padding:0 .8rem}.cart-btn .cl{display:none}}
 
 /* hero */
 .hero{padding-block:clamp(2rem,5vw,4.5rem) clamp(1.5rem,3vw,2.5rem)}
@@ -97,6 +98,35 @@ nav.main .dd-menu a:hover{background:var(--tint)}
 .school figure:nth-child(3){margin-top:1.25rem}
 .school img{width:100%;height:100%;object-fit:cover}
 @media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+
+
+/* home */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.home{padding-block:clamp(1.5rem,4vw,3.5rem) clamp(1rem,2vw,1.75rem)}
+.home-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.home h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800;margin:1rem 0 1.1rem;line-height:1.02}
+.home h1 em{font-style:normal;color:var(--cobalt)}
+.home .lead{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--muted);max-width:32em}
+.home-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(.5rem,1.4vw,.9rem);aspect-ratio:1/1}
+.home-mosaic figure{margin:0;border-radius:18px;overflow:hidden;background:var(--tint);box-shadow:var(--shadow)}
+.home-mosaic img,.home-mosaic video{width:100%;height:100%;object-fit:cover;display:block}
+.home-mosaic .hv{grid-row:span 2}
+.choose{padding-block:clamp(1rem,2vw,2rem) clamp(1rem,2vw,1.5rem)}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.9rem,2.4vw,1.6rem)}
+.tile{position:relative;display:block;border-radius:24px;overflow:hidden;background:var(--tint);box-shadow:var(--shadow);aspect-ratio:4/5;color:#fff;text-decoration:none}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.04)}
+.tile-b{position:absolute;inset:auto 0 0 0;display:flex;flex-direction:column;gap:.35rem;padding:2.5rem 1.4rem 1.4rem;background:linear-gradient(to top,rgba(8,14,40,.82),rgba(8,14,40,0))}
+.tile-b strong{font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.05}
+.tile-b em{font-style:normal;opacity:.92}
+.tile-b .go{margin-top:.4rem;font-weight:700}
+@media (max-width:860px){
+  .home-grid{grid-template-columns:minmax(0,1fr)}
+  .home-mosaic{aspect-ratio:4/3;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-mosaic figure:nth-child(n+4){display:none}
+}
+@media (max-width:560px){ .tiles{grid-template-columns:minmax(0,1fr)} .tile{aspect-ratio:1/1} }
+@media (prefers-reduced-motion:reduce){ .tile img{transition:none} }
 
 /* banco di pesci (divisore) */
 .shoal{display:flex;justify-content:space-between;gap:.5rem;padding-block:1.25rem;overflow:hidden}
@@ -250,12 +280,13 @@ footer .legal a{color:inherit}
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 48 48"><path d="M24 43C9 31 3.5 22.5 3.5 15A10.2 10.2 0 0 1 24 10.5 10.2 10.2 0 0 1 44.5 15C44.5 22.5 39 31 24 43Z" fill="var(--coral)"/><path d="M24 37.5C12.5 28 8 21.5 8 15.5A6.6 6.6 0 0 1 24 12.8 6.6 6.6 0 0 1 40 15.5C40 21.5 35.5 28 24 37.5Z" fill="none" stroke="#fff" stroke-width="1.3" stroke-dasharray="2.6 2.6" stroke-linecap="round" opacity=".9"/><image href="data:image/png;base64,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" x="12.31" y="10.45" width="23.38" height="25.5"/></symbol>
   <symbol id="fish" viewBox="0 0 48 24"><path d="M2 12C10 1 27 1 35 12 27 23 10 23 2 12Z"/><path d="M33 12 46 3.5V20.5Z"/><circle cx="11" cy="11" r="2" fill="var(--bg)"/></symbol>
 </svg>
 
 <header class="top">
   <div class="wrap bar">
-    <a class="logo" href="#top" aria-label="CocciDuCori, inizio pagina"><svg class="fish"><use href="#fish"/></svg><span class="lt"><b>Cocci</b><i>DuCori</i><small>Piccoli pezzi di felicità</small></span></a>
+    <a class="logo" href="#top" aria-label="CocciDuCori, inizio pagina"><svg class="mark" aria-hidden="true"><use href="#mark"/></svg><span class="lt"><b>Cocci</b><i>DuCori</i><small>Piccoli pezzi di felicità</small></span></a>
     <nav class="main" aria-label="Sezioni">
       <div class="dd"><button class="dd-btn" aria-expanded="false" aria-controls="dd-pesci">Pescetti <span aria-hidden="true">▾</span></button>
         <div class="dd-menu" id="dd-pesci" hidden><a href="#orecchini">Gli orecchini</a><a href="#laboratorio">Come nascono i pescetti</a><a href="#materiali">Materiali dei pescetti</a></div></div>
@@ -268,29 +299,42 @@ footer .legal a{color:inherit}
 </header>
 
 <main id="top">
-  <div class="hero">
-    <div class="wrap">
-      <div>
-        <p class="eyebrow">Orecchini fatti a mano</p>
-        <h1>Piccoli pesci di argilla, <em>dipinti uno a uno.</em></h1>
-        <p class="lead">Pendenti modellati in pasta Das e Fimo, decorati a mano con colori acrilici e glassati con resina UV. Ogni paio è un pezzo unico.</p>
+  <div class="home">
+    <div class="wrap home-grid">
+      <div class="home-txt">
+        <p class="eyebrow">Fatto a mano, con amore</p>
+        <h1>Piccoli pezzi di <em>felicità.</em></h1>
+        <p class="lead">Orecchini a forma di pesce, modellati e dipinti a mano, e cioccoline di stoffa cucite una a una. Due modi di portare un sorriso addosso.</p>
         <div class="cta">
-          <a class="btn" href="#orecchini">Scegli il tuo paio</a>
-          <a class="btn ghost" href="#laboratorio">Guarda come nascono</a>
+          <a class="btn" href="#scegli">Scopri i prodotti</a>
+          <a class="btn ghost" href="#laboratorio">Guarda il laboratorio</a>
         </div>
-        <ul class="facts">
-          <li><svg class="fish"><use href="#fish"/></svg>Pezzi unici</li>
-          <li><svg class="fish"><use href="#fish"/></svg>Resina UV lucida</li>
-          <li><svg class="fish"><use href="#fish"/></svg>Ganci senza nichel</li>
-        </ul>
       </div>
-      <div class="school" aria-hidden="true">
-        <figure><img src="img/notte-oro.jpg" alt=""></figure>
-        <figure><img src="img/laguna.jpg" alt=""></figure>
-        <figure><img src="img/foglia-viola.jpg" alt=""></figure>
+      <div class="home-mosaic" aria-hidden="true">
+        <figure class="hv"><video id="homevideo" src="img/laboratorio.mp4" poster="img/laboratorio-poster.jpg" autoplay muted loop playsinline preload="metadata"></video></figure>
+        <figure><img src="img/c-worn-1.jpg" alt=""></figure>
+        <figure><img src="img/indossato.jpg" alt=""></figure>
+        <figure><img src="img/lab-box.jpg" alt=""></figure>
+        <figure><img src="img/c-013.jpg" alt=""></figure>
       </div>
     </div>
   </div>
+
+  <section class="choose" id="scegli" aria-labelledby="scegli-t">
+    <div class="wrap">
+      <h2 id="scegli-t" class="sr-only">Scegli cosa scoprire</h2>
+      <div class="tiles">
+        <a class="tile" href="#orecchini">
+          <img src="img/laguna.jpg" alt="Orecchini a forma di pesce turchese con cuore rosso e coda corallo">
+          <span class="tile-b"><strong>Gli orecchini</strong><em>Pescetti di argilla dipinti uno a uno</em><span class="go">Scopri gli orecchini →</span></span>
+        </a>
+        <a class="tile" href="#cioccoline">
+          <img src="img/c-fiori.jpg" alt="Due cioccoline di stoffa rosa a fiorellini">
+          <span class="tile-b"><strong>Le cioccoline</strong><em>Elastici di stoffa cuciti a mano</em><span class="go">Scopri le cioccoline →</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <div class="wrap shoal" aria-hidden="true" id="shoal"></div>
 
@@ -363,7 +407,7 @@ footer .legal a{color:inherit}
     <div class="wrap">
       <div class="sec-head"><h2>Come nascono le cioccoline</h2><p>Tessuti scelti uno a uno, tagliati e cuciti per diventare un elastico morbido per capelli.</p></div>
       <ol class="steps c-steps">
-        <li><div><h3>Scelta del tessuto</h3><p>Fiori, pois, vichy, stelle e leopardato: ogni cioccolina nasce da una stampa scelta con cura.</p></div></li>
+        <li><div><h3>Scelta del tessuto</h3><p>Fiori, pois, vichy, stelle e leopardato: ogni cioccolina nasce da una stampa scelta con cura, facendo attenzione a riutilizzo di tessuti e scampoli in un'ottica di sostenibilità e green.</p></div></li>
         <li><div><h3>Taglio e cucitura</h3><p>Il tessuto viene tagliato e cucito a forma di anello morbido e arricciato.</p></div></li>
         <li><div><h3>Elastico</h3><p>Dentro l'anello passa l'elastico che tiene i capelli senza stringere.</p></div></li>
         <li><div><h3>Bollino e bustina</h3><p>Ogni cioccolina riceve il suo bollino "Handmade with Love" e una bustina trasparente.</p></div></li>
@@ -388,39 +432,25 @@ footer .legal a{color:inherit}
 
   <section id="set-mamma-figlia">
     <div class="wrap">
-      <div class="sec-head"><h2>Set mamma e figlia</h2><p>Scegli il tessuto per la cioccolina di mamma e quello per la cioccolina di figlia. Possono essere uguali o diversi.</p></div>
+      <div class="sec-head"><h2>Set mamma e figlia</h2><p>Ogni bustina contiene due cioccoline per abbinare i capelli di mamma e figlia. Per richieste speciali scrivere al laboratorio: <a href="mailto:cocciducori@gmail.com">cocciducori@gmail.com</a></p></div>
       <div class="set">
         <img class="set-ph" loading="lazy" src="img/c-worn-2.jpg" alt="Due cioccoline rosa a fiori indossate da una mamma e da una bambina">
         <form class="set-form" id="set-form">
-          <fieldset class="pick" data-g="mamma"><legend>Tessuto per la mamma</legend><div class="pick-grid">
-            <label class="pk"><input type="radio" name="mamma" value="Fiori rosa su beige" required><img loading="lazy" src="img/t-rametti-rosa.jpg" alt="" width="64" height="64"><span>Fiori rosa su beige</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Vichy marrone" required><img loading="lazy" src="img/t-vichy-marrone.jpg" alt="" width="64" height="64"><span>Vichy marrone</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Pois su sabbia" required><img loading="lazy" src="img/t-pois-sabbia.jpg" alt="" width="64" height="64"><span>Pois su sabbia</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Fiorellini verdi su crema" required><img loading="lazy" src="img/t-fiorellini-verdi.jpg" alt="" width="64" height="64"><span>Fiorellini verdi su crema</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Stelle su marrone" required><img loading="lazy" src="img/t-stelle-marrone.jpg" alt="" width="64" height="64"><span>Stelle su marrone</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Fiori di campo viola" required><img loading="lazy" src="img/t-fiori-viola.jpg" alt="" width="64" height="64"><span>Fiori di campo viola</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Leopardato bruno" required><img loading="lazy" src="img/t-leopardato-bruno.jpg" alt="" width="64" height="64"><span>Leopardato bruno</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Leopardato rosa" required><img loading="lazy" src="img/t-leopardato-rosa.jpg" alt="" width="64" height="64"><span>Leopardato rosa</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Leopardato crema" required><img loading="lazy" src="img/t-leopardato-crema.jpg" alt="" width="64" height="64"><span>Leopardato crema</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Leopardato grigio" required><img loading="lazy" src="img/t-leopardato-grigio.jpg" alt="" width="64" height="64"><span>Leopardato grigio</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Leopardato rosso" required><img loading="lazy" src="img/t-leopardato-rosso.jpg" alt="" width="64" height="64"><span>Leopardato rosso</span></label>
-            <label class="pk"><input type="radio" name="mamma" value="Leopardato beige" required><img loading="lazy" src="img/t-leopardato-beige.jpg" alt="" width="64" height="64"><span>Leopardato beige</span></label>
+          <fieldset class="pick" data-g="set"><legend>Tessuti disponibili per il set.</legend><p class="note" style="margin:0 0 .8rem">Scegli tra i prodotti oppure fra le seguenti disponibilità di tessuti.</p><div class="pick-grid">
+            <label class="pk"><input type="radio" name="tessuto" value="Fiori rosa su beige" required><img loading="lazy" src="img/t-rametti-rosa.jpg" alt="" width="64" height="64"><span>Fiori rosa su beige</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Vichy marrone" required><img loading="lazy" src="img/t-vichy-marrone.jpg" alt="" width="64" height="64"><span>Vichy marrone</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Pois su sabbia" required><img loading="lazy" src="img/t-pois-sabbia.jpg" alt="" width="64" height="64"><span>Pois su sabbia</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Fiorellini verdi su crema" required><img loading="lazy" src="img/t-fiorellini-verdi.jpg" alt="" width="64" height="64"><span>Fiorellini verdi su crema</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Stelle su marrone" required><img loading="lazy" src="img/t-stelle-marrone.jpg" alt="" width="64" height="64"><span>Stelle su marrone</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Fiori di campo viola" required><img loading="lazy" src="img/t-fiori-viola.jpg" alt="" width="64" height="64"><span>Fiori di campo viola</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato bruno" required><img loading="lazy" src="img/t-leopardato-bruno.jpg" alt="" width="64" height="64"><span>Leopardato bruno</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato rosa" required><img loading="lazy" src="img/t-leopardato-rosa.jpg" alt="" width="64" height="64"><span>Leopardato rosa</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato crema" required><img loading="lazy" src="img/t-leopardato-crema.jpg" alt="" width="64" height="64"><span>Leopardato crema</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato grigio" required><img loading="lazy" src="img/t-leopardato-grigio.jpg" alt="" width="64" height="64"><span>Leopardato grigio</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato rosso" required><img loading="lazy" src="img/t-leopardato-rosso.jpg" alt="" width="64" height="64"><span>Leopardato rosso</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato beige" required><img loading="lazy" src="img/t-leopardato-beige.jpg" alt="" width="64" height="64"><span>Leopardato beige</span></label>
           </div></fieldset>
-          <fieldset class="pick" data-g="figlia"><legend>Tessuto per la figlia</legend><div class="pick-grid">
-            <label class="pk"><input type="radio" name="figlia" value="Fiori rosa su beige" required><img loading="lazy" src="img/t-rametti-rosa.jpg" alt="" width="64" height="64"><span>Fiori rosa su beige</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Vichy marrone" required><img loading="lazy" src="img/t-vichy-marrone.jpg" alt="" width="64" height="64"><span>Vichy marrone</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Pois su sabbia" required><img loading="lazy" src="img/t-pois-sabbia.jpg" alt="" width="64" height="64"><span>Pois su sabbia</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Fiorellini verdi su crema" required><img loading="lazy" src="img/t-fiorellini-verdi.jpg" alt="" width="64" height="64"><span>Fiorellini verdi su crema</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Stelle su marrone" required><img loading="lazy" src="img/t-stelle-marrone.jpg" alt="" width="64" height="64"><span>Stelle su marrone</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Fiori di campo viola" required><img loading="lazy" src="img/t-fiori-viola.jpg" alt="" width="64" height="64"><span>Fiori di campo viola</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Leopardato bruno" required><img loading="lazy" src="img/t-leopardato-bruno.jpg" alt="" width="64" height="64"><span>Leopardato bruno</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Leopardato rosa" required><img loading="lazy" src="img/t-leopardato-rosa.jpg" alt="" width="64" height="64"><span>Leopardato rosa</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Leopardato crema" required><img loading="lazy" src="img/t-leopardato-crema.jpg" alt="" width="64" height="64"><span>Leopardato crema</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Leopardato grigio" required><img loading="lazy" src="img/t-leopardato-grigio.jpg" alt="" width="64" height="64"><span>Leopardato grigio</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Leopardato rosso" required><img loading="lazy" src="img/t-leopardato-rosso.jpg" alt="" width="64" height="64"><span>Leopardato rosso</span></label>
-            <label class="pk"><input type="radio" name="figlia" value="Leopardato beige" required><img loading="lazy" src="img/t-leopardato-beige.jpg" alt="" width="64" height="64"><span>Leopardato beige</span></label>
-          </div></fieldset>
-          <p class="note" id="set-sum" aria-live="polite">Scegli un tessuto per ciascuna.</p>
+          <p class="note" id="set-sum" aria-live="polite">Scegli un tessuto.</p>
           <button class="btn" type="submit">Aggiungi il set al carrello · 20 €</button>
           <p class="note">Il set costa 20 € (10 € per cioccolina, IVA inclusa). I tessuti elencati sono quelli in magazzino: se uno è finito ti avvisiamo e ti proponiamo un'alternativa o ti rimborsiamo.</p>
         </form>
@@ -431,7 +461,7 @@ footer .legal a{color:inherit}
   <section class="ship" id="spedizioni">
     <div class="wrap">
       <h2>Spedizioni e pagamenti</h2>
-      <div><h3>Spedizione in Italia</h3><p id="ship-p"></p></div>
+      <div><h3>Spedizione</h3><p id="ship-p"></p></div>
       <div><h3>Preparazione</h3><p>Ogni ordine viene imballato a mano, in una bustina trasparente, pronto da regalare.</p></div>
       <div><h3>Pagamento</h3><p id="pay-p"></p></div>
       <div><h3>Recesso</h3><p>Hai 14 giorni dalla consegna per ripensarci, come previsto per gli acquisti a distanza.</p></div>
@@ -441,7 +471,7 @@ footer .legal a{color:inherit}
 
 <footer>
   <div class="wrap">
-    <div><a class="logo" href="#top"><svg class="fish"><use href="#fish"/></svg><span class="lt"><b>Cocci</b><i>DuCori</i><small>Piccoli pezzi di felicità</small></span></a><p>Orecchini e cioccoline fatti a mano.<br>www.cocciducori.it</p></div>
+    <div><a class="logo" href="#top"><svg class="mark" aria-hidden="true"><use href="#mark"/></svg><span class="lt"><b>Cocci</b><i>DuCori</i><small>Piccoli pezzi di felicità</small></span></a><p>Orecchini e cioccoline fatti a mano.<br>www.cocciducori.it</p></div>
     <div><strong>Contatti</strong><ul id="contacts"></ul></div>
     <div><strong>Il negozio</strong><ul><li><a href="#orecchini">Pescetti (orecchini)</a></li><li><a href="#laboratorio">Come nascono i pescetti</a></li><li><a href="#cioccoline">Cioccoline</a></li><li><a href="#cioccoline-come">Come nascono le cioccoline</a></li><li><a href="#spedizioni">Spedizioni</a></li><li><a href="info-legali.html#condizioni">Condizioni di vendita</a></li><li><a href="info-legali.html#privacy">Privacy</a></li></ul></div>
   </div>
@@ -464,13 +494,15 @@ footer .legal a{color:inherit}
 /* ---------- Impostazioni del negozio: modifica qui ---------- */
 const CONFIG = {
   whatsapp: "",            // es. "393331234567" (prefisso senza +). Se vuoto, il pulsante WhatsApp non compare
-  email: "",               // es. "ciao@tuodominio.it"
+  email: "cocciducori@gmail.com",               // es. "ciao@tuodominio.it"
   instagram: "",           // es. "cocciducori"
-  shippingCost: 3.9,       // euro, spedizione in Italia
+  shippingCost: 1.8,       // euro, spedizione in Italia
+  shippingCostEU: 3.8,     // euro, spedizione all'estero (UE)
   freeShippingFrom: 40,    // euro, spedizione gratuita sopra questa cifra
   web3formsKey: "e87e129a-64a5-4c2c-9c6c-708684ec7bdb",        // chiave gratuita di web3forms.com (arriva via email). Se vuota, l'ordine si invia a mano (copia/WhatsApp)
-  paypalMe: "",            // es. "cocciducori" (da paypal.me/cocciducori). Se vuoto, i dati PayPal li scrivi tu al cliente
-  iban: "",                // IBAN di Daca S.r.l. per il bonifico. Se vuoto, i dati del bonifico li scrivi tu al cliente
+  paypalClientId: "",      // Client ID LIVE da developer.paypal.com (gratis). Se presente, il numero ordine passa in automatico a PayPal
+  paypalMe: "cocciducori",            // es. "cocciducori" (da paypal.me/cocciducori). Se vuoto, i dati PayPal li scrivi tu al cliente
+  iban: "IT98 M360 9201 6002 6998 6490 190",                // IBAN di Daca S.r.l. per il bonifico. Se vuoto, i dati del bonifico li scrivi tu al cliente
   ibanHolder: "Daca S.r.l.",
   payments: ["PayPal", "Bonifico bancario"]
 };
@@ -586,6 +618,7 @@ const CIOC = [
   {id:"c-010", code:"010", nome:"Fiorellini su grigio", sub:"Grigio caldo con fiorellini bianchi e gialli", prezzo:CIOC_PRICE, img:"img/c-010.jpg", tipo:"Cioccolina"},
   {id:"c-011", code:"011", nome:"Giardino scuro", sub:"Blu scuro con fiori gialli, corallo e turchesi", prezzo:CIOC_PRICE, img:"img/c-011.jpg", tipo:"Cioccolina"},
   {id:"c-012", code:"012", nome:"Foglie su blu", sub:"Blu polvere con foglie e fiori chiari", prezzo:CIOC_PRICE, img:"img/c-012.jpg", tipo:"Cioccolina"},
+  {id:"c-013", code:"013", nome:"Rametti notturni", sub:"Fondo viola scuro con disegni ocra e crema", prezzo:CIOC_PRICE, img:"img/c-013.jpg", tipo:"Cioccolina"},
   {id:"c-fiori", code:"fiori", nome:"Fiori rosa", sub:"Fondo rosa pieno di fiorellini bianchi e rossi", prezzo:CIOC_PRICE, img:"img/c-fiori.jpg", tipo:"Cioccolina"}
 ];
 
@@ -595,8 +628,8 @@ const eur = n => new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR"}
 const byId = id => {
   const p = PRODUCTS.find(p => p.id === id) || CIOC.find(p => p.id === id);
   if(p) return p;
-  const m = /^set:(.+)\|(.+)$/.exec(id||"");
-  return m ? {id, nome:`Set mamma e figlia: ${m[1]} + ${m[2]}`, prezzo:SET_PRICE, img:"img/c-worn-2.jpg", tipo:"Set di 2 cioccoline"} : undefined;
+  const m = /^set:([^|]+)/.exec(id||"");
+  return m ? {id, nome:`Set mamma e figlia: ${m[1]}`, prezzo:SET_PRICE, img:"img/c-worn-2.jpg", tipo:"Set di 2 cioccoline"} : undefined;
 };
 const fishSvg = (cls="") => `<svg class="fish ${cls}"><use href="#fish"/></svg>`;
 const PAGE = 12; let shown = PAGE;
@@ -678,9 +711,12 @@ function closeLayers(keep){
 document.addEventListener("keydown", e => { if(e.key==="Escape") closeLayers(); });
 
 /* ---------- Carrello ---------- */
+let dest = "IT";
+const EU = ["Austria","Belgio","Bulgaria","Cipro","Croazia","Danimarca","Estonia","Finlandia","Francia","Germania","Grecia","Irlanda","Lettonia","Lituania","Lussemburgo","Malta","Paesi Bassi","Polonia","Portogallo","Repubblica Ceca","Romania","Slovacchia","Slovenia","Spagna","Svezia","Ungheria"];
+const shipCost = ()=> dest==="UE" ? CONFIG.shippingCostEU : CONFIG.shippingCost;
 function totals(){
   const sub = cart.reduce((s,id)=>s+byId(id).prezzo,0);
-  const ship = !cart.length ? 0 : (sub>=CONFIG.freeShippingFrom ? 0 : CONFIG.shippingCost);
+  const ship = !cart.length ? 0 : (sub>=CONFIG.freeShippingFrom ? 0 : shipCost());
   return {sub, ship, tot: sub+ship};
 }
 function updateCount(){ $("#count").textContent = cart.length; }
@@ -702,7 +738,10 @@ function renderDrawer(){
     }
     body.innerHTML = cart.map(id=>{const p=byId(id);return `<div class="line-item"><img src="${p.img}" alt=""><div><h3>${p.nome}</h3><small>${p.tipo||"Pezzo unico"}</small><br><button class="link" data-action="remove" data-id="${id}">Rimuovi</button></div><span class="price">${eur(p.prezzo)}</span></div>`}).join("");
     const missing = CONFIG.freeShippingFrom - t.sub;
-    foot.innerHTML = `${t.ship>0&&missing>0?`<p class="note">Ancora ${eur(missing)} per la spedizione gratuita.</p>`:""}
+    foot.innerHTML = `<fieldset class="fld dest"><legend>Dove spedire</legend>
+        <label class="opt"><input type="radio" name="dest" value="IT" ${dest==="IT"?"checked":""}>Italia · ${eur(CONFIG.shippingCost)}</label>
+        <label class="opt"><input type="radio" name="dest" value="UE" ${dest==="UE"?"checked":""}>Estero (UE) · ${eur(CONFIG.shippingCostEU)}</label></fieldset>
+      ${t.ship>0&&missing>0?`<p class="note">Ancora ${eur(missing)} per la spedizione gratuita.</p>`:""}
       <div class="tot"><span>Subtotale</span><span>${eur(t.sub)}</span></div>
       <div class="tot"><span>Spedizione</span><span>${t.ship?eur(t.ship):"Gratis"}</span></div>
       <div class="tot big"><span>Totale (IVA inclusa)</span><span>${eur(t.tot)}</span></div>
@@ -714,15 +753,19 @@ function renderDrawer(){
       <div class="two"><div class="fld"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
       <div class="fld"><label for="f-tel">Telefono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel"></div></div>
       <div class="fld"><label for="f-ind">Indirizzo di spedizione</label><input id="f-ind" name="ind" required autocomplete="street-address"></div>
-      <div class="three"><div class="fld"><label for="f-cap">CAP</label><input id="f-cap" name="cap" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code"></div>
+      ${dest==="UE"?`<div class="fld"><label for="f-paese">Paese</label><select id="f-paese" name="paese" required autocomplete="country-name">${EU.map(c=>`<option>${c}</option>`).join("")}</select></div>
+      <div class="two"><div class="fld"><label for="f-cap">CAP</label><input id="f-cap" name="cap" required maxlength="10" autocomplete="postal-code"></div>
+      <div class="fld"><label for="f-citta">Città</label><input id="f-citta" name="citta" required autocomplete="address-level2"></div></div>`
+      :`<div class="three"><div class="fld"><label for="f-cap">CAP</label><input id="f-cap" name="cap" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code"></div>
       <div class="fld"><label for="f-citta">Città</label><input id="f-citta" name="citta" required autocomplete="address-level2"></div>
-      <div class="fld"><label for="f-prov">Prov.</label><input id="f-prov" name="prov" required pattern="[A-Za-z]{2}" maxlength="2" autocomplete="address-level1"></div></div>
+      <div class="fld"><label for="f-prov">Prov.</label><input id="f-prov" name="prov" required pattern="[A-Za-z]{2}" maxlength="2" autocomplete="address-level1"></div></div>`}
+      <p class="note">Spedizione ${dest==="UE"?"all'estero (UE)":"in Italia"}: ${t.ship?eur(t.ship):"gratis"}.</p>
       <fieldset class="fld"><legend>Come preferisci pagare</legend>
         ${CONFIG.payments.map((m,i)=>`<label class="opt"><input type="radio" name="pag" value="${m}" ${i===0?"checked":""}>${m}</label>`).join("")}</fieldset>
       <div class="fld"><label for="f-note">Note (facoltativo)</label><textarea id="f-note" name="note" placeholder="Ad esempio: è un regalo"></textarea></div>
       <div class="fld"><label for="f-fatt">Dati per la fattura (facoltativo)</label><textarea id="f-fatt" name="fatt" placeholder="Nome o ragione sociale, codice fiscale o partita IVA, indirizzo"></textarea></div>
       <p class="note">Il totale comprende l'IVA e la spedizione. Il pagamento non avviene sul sito: dopo l'ordine ti mostriamo come pagare con PayPal o bonifico. L'ordine è confermato alla ricezione del pagamento. Ogni paio è unico: se è già stato venduto ti avviso e ti rimborso. Per cioccoline e set, se il tessuto è finito ti propongo un'alternativa o ti rimborso.</p>
-      <label class="opt"><input type="checkbox" name="acc" value="si" required>Ho letto e accetto le&nbsp;<a href="info-legali.html#condizioni" target="_blank" rel="noopener">condizioni di vendita</a>, compreso il diritto di recesso di 14 giorni.</label>
+      <label class="opt acc"><input type="checkbox" name="acc" value="si" required><span>Ho letto e accetto le <a href="info-legali.html#condizioni" target="_blank" rel="noopener">condizioni di vendita</a>, compreso il diritto di recesso di 14 giorni.</span></label>
       <p class="note">Usiamo i tuoi dati solo per gestire l'ordine: <a href="info-legali.html#privacy" target="_blank" rel="noopener">informativa privacy</a>.</p>
     </form>`;
     foot.innerHTML = `<div class="tot big"><span>Totale (IVA inclusa)</span><span>${eur(t.tot)}</span></div>
@@ -741,6 +784,7 @@ function renderDrawer(){
       ${payBox(order)}
       <details class="sumd"><summary>Riepilogo dell'ordine</summary><pre class="summary" id="sum"></pre></details>`;
     $("#sum").textContent = order.text;
+    mountPayPal();
     foot.innerHTML = sent
       ? `<button class="btn" data-action="done">Chiudi</button>`
       : `${wa?`<a class="btn" href="${wa}" target="_blank" rel="noopener">Invia su WhatsApp</a>`:""}
@@ -755,7 +799,7 @@ function submitOrder(e){
   const now = new Date(), pad = n=>String(n).padStart(2,"0");
   const num = "CDC-"+String(now.getFullYear()).slice(2)+pad(now.getMonth()+1)+pad(now.getDate())+"-"+Math.floor(100+Math.random()*900);
   const rows = cart.map(id=>`• ${byId(id).nome} — ${eur(byId(id).prezzo)}`).join("\n");
-  const text = `Ciao! Vorrei ordinare da CocciDuCori (Daca S.r.l., P.IVA 04645100274) — ordine ${num}:\n\n${rows}\n\nSubtotale: ${eur(t.sub)}\nSpedizione: ${t.ship?eur(t.ship):"gratis"}\nTotale (IVA inclusa): ${eur(t.tot)}\n\nNome: ${d.nome}\nEmail: ${d.email}${d.tel?"\nTelefono: "+d.tel:""}\nIndirizzo: ${d.ind}, ${d.cap} ${d.citta} (${d.prov.toUpperCase()})\nPagamento: ${d.pag}${d.note?"\nNote: "+d.note:""}${d.fatt?"\nDati per la fattura: "+d.fatt.replace(/\n/g," – "):""}\n\nHo letto e accetto le condizioni di vendita, compreso il diritto di recesso di 14 giorni.`;
+  const text = `Ciao! Vorrei ordinare da CocciDuCori (Daca S.r.l., P.IVA 04645100274) — ordine ${num}:\n\n${rows}\n\nSubtotale: ${eur(t.sub)}\nSpedizione ${dest==="UE"?"estero (UE)":"Italia"}: ${t.ship?eur(t.ship):"gratis"}\nTotale (IVA inclusa): ${eur(t.tot)}\n\nNome: ${d.nome}\nEmail: ${d.email}${d.tel?"\nTelefono: "+d.tel:""}\nIndirizzo: ${d.ind}, ${d.cap} ${d.citta} ${d.prov?`(${d.prov.toUpperCase()})`:`– ${d.paese}`}\nPagamento: ${d.pag}${d.note?"\nNote: "+d.note:""}${d.fatt?"\nDati per la fattura: "+d.fatt.replace(/\n/g," – "):""}\n\nHo letto e accetto le condizioni di vendita, compreso il diritto di recesso di 14 giorni.`;
   order = {num, nome:d.nome, text, pag:d.pag, tot:t.tot, status:"manual"};
   const btn=document.querySelector('button[type=submit][form=co]');
   const finish=()=>{ view="done"; renderDrawer(); $("#d-body").scrollTop=0; };
@@ -767,12 +811,39 @@ function submitOrder(e){
   }).then(r=>r.json()).then(j=>{ order.status = j&&j.success ? "sent" : "failed"; finish(); })
     .catch(()=>{ order.status="failed"; finish(); });
 }
+let ppSdk=null;
+function loadPayPal(){
+  if(ppSdk) return ppSdk;
+  ppSdk=new Promise((res,rej)=>{
+    if(window.paypal) return res(window.paypal);
+    const sc=document.createElement("script");
+    sc.src=`https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(CONFIG.paypalClientId)}&currency=EUR&locale=it_IT&components=buttons&disable-funding=paylater`;
+    sc.onload=()=>res(window.paypal); sc.onerror=()=>{ppSdk=null;rej();}; document.head.appendChild(sc);
+  });
+  return ppSdk;
+}
+function mountPayPal(){
+  const box=$("#pp-btn"); if(!box||!order||order.pag!=="PayPal"||!CONFIG.paypalClientId) return;
+  const o=order, fallback=()=>{ box.innerHTML = CONFIG.paypalMe
+    ? `<a class="btn" href="https://www.paypal.me/${encodeURIComponent(CONFIG.paypalMe)}/${o.tot.toFixed(2)}EUR" target="_blank" rel="noopener">Paga con PayPal</a><p class="note">Nel messaggio di pagamento scrivi <strong>${o.num}</strong>.</p>`
+    : `<p class="note">PayPal non si carica: ti scrivo io il link per pagare.</p>`; };
+  loadPayPal().then(pp=>{
+    box.textContent="";
+    pp.Buttons({
+      style:{layout:"vertical",shape:"pill",label:"pay"},
+      createOrder:(d,a)=>a.order.create({purchase_units:[{description:`Ordine ${o.num} - CocciDuCori`.slice(0,127),custom_id:o.num,invoice_id:o.num,amount:{currency_code:"EUR",value:o.tot.toFixed(2)}}]}),
+      onApprove:(d,a)=>a.order.capture().then(()=>{ o.paid=true; box.innerHTML=`<p><strong>Pagamento ricevuto, grazie!</strong> L'ordine ${o.num} è confermato: ti scrivo appena preparo la spedizione.</p>`; }),
+      onError:()=>{ toast("Il pagamento non è andato a buon fine: riprova o scegli il bonifico"); }
+    }).render("#pp-btn");
+  }).catch(fallback);
+}
 function payBox(o){
   const imp = o.tot.toFixed(2).replace(".",",")+" €";
   if(o.pag==="PayPal"){
+    if(CONFIG.paypalClientId) return `<div class="paybox"><h3>Paga con PayPal</h3><p>Importo: <strong>${imp}</strong>. Il numero ordine <strong>${o.num}</strong> viene indicato in automatico.</p><div id="pp-btn" aria-live="polite">Caricamento di PayPal…</div></div>`;
     if(!CONFIG.paypalMe) return `<p class="note">Ti scrivo io il link PayPal per pagare ${imp}.</p>`;
     const handle = CONFIG.paypalMe.replace(/^https?:\/\/(www\.)?paypal\.me\//,"").replace(/\/+$/,"");
-    return `<div class="paybox"><h3>Come pagare con PayPal</h3><p>Importo: <strong>${imp}</strong>. Nel messaggio di pagamento scrivi il numero ordine <strong>${o.num}</strong>.</p>
+    return `<div class="paybox"><h3>Come pagare con PayPal</h3><p>Importo: <strong>${imp}</strong>. Nel messaggio di pagamento scrivi il numero ordine <strong>${o.num}</strong> (<button class="link" data-action="copynum" type="button">copia</button>).</p>
       <a class="btn" href="https://www.paypal.me/${encodeURIComponent(handle)}/${o.tot.toFixed(2)}EUR" target="_blank" rel="noopener">Paga ${imp} con PayPal</a></div>`;
   }
   if(!CONFIG.iban) return `<p class="note">Ti scrivo io i dati per il bonifico di ${imp}.</p>`;
@@ -797,15 +868,16 @@ function openCart(){ view = cart.length?"cart":"cart"; renderDrawer(); openLayer
 (function(){
   const f=$("#set-form"); if(!f) return;
   const val=n=>{const r=f.querySelector(`input[name=${n}]:checked`); return r?r.value:"";};
-  const sum=()=>{const m=val("mamma"), g=val("figlia"); $("#set-sum").textContent = m&&g ? `Mamma: ${m}. Figlia: ${g}.` : "Scegli un tessuto per ciascuna.";};
+  const sum=()=>{const t=val("tessuto"); $("#set-sum").textContent = t ? `Tessuto scelto: ${t}.` : "Scegli un tessuto.";};
   f.addEventListener("change",sum);
   f.addEventListener("submit",e=>{
     e.preventDefault();
-    const sid=`set:${val("mamma")}|${val("figlia")}`;
+    const sid=`set:${val("tessuto")}`;
     if(cart.includes(sid)) toast("Questo set è già nel carrello"); else addToCart(sid);
   });
 })();
 
+document.addEventListener("change",e=>{ if(e.target.name==="dest"){ dest=e.target.value; renderDrawer(); } });
 /* ---------- Eventi ---------- */
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-action]"); if(!b) return;
@@ -825,6 +897,7 @@ document.addEventListener("click", e => {
   else if(a==="close-all") closeLayers();
   else if(a==="checkout"){ view="checkout"; renderDrawer(); setTimeout(()=>{const f=$("#f-nome"); if(f) f.focus();},50); }
   else if(a==="back"){ view="cart"; renderDrawer(); }
+  else if(a==="copynum"){ try{ navigator.clipboard.writeText(order.num).then(()=>toast("Numero ordine copiato"),()=>toast(order.num)); }catch(err){ toast(order.num); } }
   else if(a==="copy"){
     const ta=$("#sum");
     const fallback=()=>{ const r=document.createRange(); r.selectNodeContents(ta); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Seleziona e copia il testo"); };
@@ -834,7 +907,7 @@ document.addEventListener("click", e => {
 });
 
 /* ---------- Testi che dipendono dalle impostazioni ---------- */
-$("#ship-p").textContent = `${eur(CONFIG.shippingCost)} per ordine, gratis da ${eur(CONFIG.freeShippingFrom)}.`;
+$("#ship-p").textContent = `${eur(CONFIG.shippingCost)} in Italia, ${eur(CONFIG.shippingCostEU)} all'estero (UE), per ordine. Gratis da ${eur(CONFIG.freeShippingFrom)}.`;
 $("#pay-p").textContent = `${CONFIG.payments.join(" o ")}. Dopo l'ordine ti mostriamo come pagare; l'ordine è confermato alla ricezione del pagamento.`;
 (function(){
   const c=[];
@@ -842,6 +915,13 @@ $("#pay-p").textContent = `${CONFIG.payments.join(" o ")}. Dopo l'ordine ti most
   if(CONFIG.whatsapp) c.push(`<li>WhatsApp +${CONFIG.whatsapp}</li>`);
   if(CONFIG.instagram) c.push(`<li><a href="https://instagram.com/${CONFIG.instagram}" target="_blank" rel="noopener">Instagram @${CONFIG.instagram}</a></li>`);
   $("#contacts").innerHTML = c.length ? c.join("") : "<li>Per ordinare usa il carrello.</li>";
+})();
+
+/* ---------- Video della home ---------- */
+(function(){
+  const v=$("#homevideo"); if(!v) return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ v.removeAttribute("autoplay"); v.pause(); return; }
+  const p=v.play(); if(p&&p.catch) p.catch(()=>{});
 })();
 
 /* ---------- Video del banco di lavoro ---------- */
