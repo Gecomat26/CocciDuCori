@@ -14,7 +14,7 @@
 :root{
   --bg:#F4F6F5; --surface:#FFFFFF; --tint:#E8EDF8;
   --ink:#13214F; --muted:#56608A; --line:#D9DEEA;
-  --cobalt:#2342B0; --on-cobalt:#FFFFFF; --coral:#F400AC; --heart:#D8443C; --on-coral:#FFFFFF; --gold:#B58A12;
+  --cobalt:#2342B0; --on-cobalt:#FFFFFF; --coral:#F400AC; --heart:#F400AC; --on-coral:#FFFFFF; --gold:#B58A12;
   --shadow:0 1px 2px rgba(19,33,79,.06),0 8px 24px rgba(19,33,79,.08);
   --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -22,13 +22,13 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0D1430; --surface:#151F45; --tint:#1B2757;
   --ink:#EEF1FB; --muted:#A5AED2; --line:#2A3664;
-  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF4FC6; --heart:#FF7A70; --on-coral:#0D1430; --gold:#E3B94A;
+  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF4FC6; --heart:#FF4FC6; --on-coral:#0D1430; --gold:#E3B94A;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0D1430; --surface:#151F45; --tint:#1B2757;
   --ink:#EEF1FB; --muted:#A5AED2; --line:#2A3664;
-  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF4FC6; --heart:#FF7A70; --on-coral:#0D1430; --gold:#E3B94A;
+  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF4FC6; --heart:#FF4FC6; --on-coral:#0D1430; --gold:#E3B94A;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
   color-scheme:dark}
 
@@ -492,7 +492,7 @@ const CONFIG = {
   shippingCostEU: 3.8,     // euro, spedizione all'estero (UE)
   freeShippingFrom: 40,    // euro, spedizione gratuita sopra questa cifra
   web3formsKey: "e87e129a-64a5-4c2c-9c6c-708684ec7bdb",        // chiave gratuita di web3forms.com (arriva via email). Se vuota, l'ordine si invia a mano (copia/WhatsApp)
-  paypalClientId: "",      // Client ID LIVE da developer.paypal.com (gratis). Se presente, il numero ordine passa in automatico a PayPal
+  paypalClientId: "BAAzxjXJIUIudGmgtUlk2iOe2yduYUPneFUE7owCATBZyC4vOSkjAlUbRU1YjZjvdzFwo_GBcPrNt9OSAE",      // Client ID LIVE da developer.paypal.com (gratis). Se presente, il numero ordine passa in automatico a PayPal
   paypalMe: "cocciducori",            // es. "cocciducori" (da paypal.me/cocciducori). Se vuoto, i dati PayPal li scrivi tu al cliente
   iban: "IT98 M360 9201 6002 6998 6490 190",                // IBAN di Daca S.r.l. per il bonifico. Se vuoto, i dati del bonifico li scrivi tu al cliente
   ibanHolder: "Daca S.r.l.",
@@ -753,7 +753,16 @@ function renderDrawer(){
       <fieldset class="fld"><legend>Come preferisci pagare</legend>
         ${CONFIG.payments.map((m,i)=>`<label class="opt"><input type="radio" name="pag" value="${m}" ${i===0?"checked":""}>${m}</label>`).join("")}</fieldset>
       <div class="fld"><label for="f-note">Note (facoltativo)</label><textarea id="f-note" name="note" placeholder="Ad esempio: è un regalo"></textarea></div>
-      <div class="fld"><label for="f-fatt">Dati per la fattura (facoltativo)</label><textarea id="f-fatt" name="fatt" placeholder="Nome o ragione sociale, codice fiscale o partita IVA, indirizzo"></textarea></div>
+      <label class="opt"><input type="checkbox" id="f-wantfatt" name="wantfatt" value="si"><span>Desidero la fattura</span></label>
+      <div id="fatt-box" hidden>
+        <div class="fld"><label for="f-fn">Nome e cognome o ragione sociale</label><input id="f-fn" name="fatt_nome" autocomplete="organization"></div>
+        <div class="two"><div class="fld"><label for="f-cf">Codice fiscale</label><input id="f-cf" name="fatt_cf" maxlength="16" autocapitalize="characters"></div>
+        <div class="fld"><label for="f-piva">Partita IVA (se hai)</label><input id="f-piva" name="fatt_piva" maxlength="14" inputmode="numeric"></div></div>
+        <div class="fld"><label for="f-find">Indirizzo di fatturazione (se diverso da quello di spedizione)</label><input id="f-find" name="fatt_ind"></div>
+        <div class="two"><div class="fld"><label for="f-sdi">Codice destinatario (SDI)</label><input id="f-sdi" name="fatt_sdi" maxlength="7" autocapitalize="characters"></div>
+        <div class="fld"><label for="f-pec">PEC (alternativa al codice)</label><input id="f-pec" name="fatt_pec" type="email"></div></div>
+        <p class="note">La fattura è facoltativa per i privati e arriva via email dopo il pagamento. Servono il codice fiscale o la partita IVA.</p>
+      </div>
       <p class="note">Il totale comprende l'IVA e la spedizione. Il pagamento non avviene sul sito: dopo l'ordine ti mostriamo come pagare con PayPal o bonifico. L'ordine è confermato alla ricezione del pagamento. Ogni paio è unico: se è già stato venduto ti avviso e ti rimborso. Per cioccoline e set, se il tessuto è finito ti propongo un'alternativa o ti rimborso.</p>
       <label class="opt acc"><input type="checkbox" name="acc" value="si" required><span>Ho letto e accetto le <a href="info-legali.html#condizioni" target="_blank" rel="noopener">condizioni di vendita</a>, compreso il diritto di recesso di 14 giorni.</span></label>
       <p class="note">Usiamo i tuoi dati solo per gestire l'ordine: <a href="info-legali.html#privacy" target="_blank" rel="noopener">informativa privacy</a>.</p>
@@ -762,6 +771,8 @@ function renderDrawer(){
       <button class="btn" type="submit" form="co">Invia l'ordine</button>
       <button class="btn ghost sm" data-action="back">Torna al carrello</button>`;
     const f=$("#co"); f.addEventListener("submit", submitOrder);
+    const wf=$("#f-wantfatt"), fb=$("#fatt-box");
+    wf.addEventListener("change",()=>{ fb.hidden=!wf.checked; $("#f-fn").required=wf.checked; if(wf.checked) $("#f-fn").value=$("#f-fn").value||$("#f-nome").value; });
   } else {
     $("#d-title").textContent="Ordine pronto";
     const wa = CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(order.text)}` : "";
@@ -789,7 +800,13 @@ function submitOrder(e){
   const now = new Date(), pad = n=>String(n).padStart(2,"0");
   const num = "CDC-"+String(now.getFullYear()).slice(2)+pad(now.getMonth()+1)+pad(now.getDate())+"-"+Math.floor(100+Math.random()*900);
   const rows = cart.map(id=>`• ${byId(id).nome} — ${eur(byId(id).prezzo)}`).join("\n");
-  const text = `Ciao! Vorrei ordinare da CocciDuCori (Daca S.r.l., P.IVA 04645100274) — ordine ${num}:\n\n${rows}\n\nSubtotale: ${eur(t.sub)}\nSpedizione ${dest==="UE"?"estero (UE)":"Italia"}: ${t.ship?eur(t.ship):"gratis"}\nTotale (IVA inclusa): ${eur(t.tot)}\n\nNome: ${d.nome}\nEmail: ${d.email}${d.tel?"\nTelefono: "+d.tel:""}\nIndirizzo: ${d.ind}, ${d.cap} ${d.citta} ${d.prov?`(${d.prov.toUpperCase()})`:`– ${d.paese}`}\nPagamento: ${d.pag}${d.note?"\nNote: "+d.note:""}${d.fatt?"\nDati per la fattura: "+d.fatt.replace(/\n/g," – "):""}\n\nHo letto e accetto le condizioni di vendita, compreso il diritto di recesso di 14 giorni.`;
+  let text = `Ciao! Vorrei ordinare da CocciDuCori (Daca S.r.l., P.IVA 04645100274) — ordine ${num}:\n\n${rows}\n\nSubtotale: ${eur(t.sub)}\nSpedizione ${dest==="UE"?"estero (UE)":"Italia"}: ${t.ship?eur(t.ship):"gratis"}\nTotale (IVA inclusa): ${eur(t.tot)}\n\nNome: ${d.nome}\nEmail: ${d.email}${d.tel?"\nTelefono: "+d.tel:""}\nIndirizzo: ${d.ind}, ${d.cap} ${d.citta} ${d.prov?`(${d.prov.toUpperCase()})`:`– ${d.paese}`}\nPagamento: ${d.pag}${d.note?"\nNote: "+d.note:""}\n\nHo letto e accetto le condizioni di vendita, compreso il diritto di recesso di 14 giorni.`;
+  let fatt="";
+  if(d.wantfatt){
+    if(!d.fatt_cf.trim() && !d.fatt_piva.trim()){ toast("Per la fattura indica codice fiscale o partita IVA."); return; }
+    fatt="\n\nFATTURA RICHIESTA\nIntestatario: "+d.fatt_nome+(d.fatt_cf?"\nCodice fiscale: "+d.fatt_cf.toUpperCase():"")+(d.fatt_piva?"\nPartita IVA: "+d.fatt_piva:"")+"\nIndirizzo di fatturazione: "+(d.fatt_ind||"come spedizione")+(d.fatt_sdi?"\nCodice destinatario: "+d.fatt_sdi.toUpperCase():"")+(d.fatt_pec?"\nPEC: "+d.fatt_pec:"");
+  }
+  text=text.replace(/\n\nHo letto e accetto/, fatt+"\n\nHo letto e accetto");
   order = {num, nome:d.nome, text, pag:d.pag, tot:t.tot, status:"manual"};
   const btn=document.querySelector('button[type=submit][form=co]');
   const finish=()=>{ view="done"; renderDrawer(); $("#d-body").scrollTop=0; };
@@ -807,7 +824,7 @@ function loadPayPal(){
   ppSdk=new Promise((res,rej)=>{
     if(window.paypal) return res(window.paypal);
     const sc=document.createElement("script");
-    sc.src=`https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(CONFIG.paypalClientId)}&currency=EUR&locale=it_IT&components=buttons&disable-funding=paylater`;
+    sc.src=`https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(CONFIG.paypalClientId)}&currency=EUR&locale=it_IT&components=buttons&enable-funding=card&disable-funding=paylater`;
     sc.onload=()=>res(window.paypal); sc.onerror=()=>{ppSdk=null;rej();}; document.head.appendChild(sc);
   });
   return ppSdk;
@@ -822,7 +839,7 @@ function mountPayPal(){
     pp.Buttons({
       style:{layout:"vertical",shape:"pill",label:"pay"},
       createOrder:(d,a)=>a.order.create({purchase_units:[{description:`Ordine ${o.num} - CocciDuCori`.slice(0,127),custom_id:o.num,invoice_id:o.num,amount:{currency_code:"EUR",value:o.tot.toFixed(2)}}]}),
-      onApprove:(d,a)=>a.order.capture().then(()=>{ o.paid=true; box.innerHTML=`<p><strong>Pagamento ricevuto, grazie!</strong> L'ordine ${o.num} è confermato: ti scrivo appena preparo la spedizione.</p>`; }),
+      onApprove:(d,a)=>a.order.capture().then(det=>{ o.paid=true; try{ const tx=(((det.purchase_units||[])[0]||{}).payments||{}).captures; const id=tx&&tx[0]?tx[0].id:(det.id||''); if(CONFIG.web3formsKey) fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:CONFIG.web3formsKey,subject:`Pagamento PayPal ricevuto ${o.num}`,from_name:"CocciDuCori",name:o.nome||"Cliente",message:`Pagamento PayPal completato per l'ordine ${o.num}. Importo: ${o.tot.toFixed(2)} EUR. ID transazione: ${id}.`})}).catch(()=>{}); }catch(e){} box.innerHTML=`<p><strong>Pagamento ricevuto, grazie!</strong> L'ordine ${o.num} è confermato: ti scrivo appena preparo la spedizione.</p>`; }),
       onError:()=>{ toast("Il pagamento non è andato a buon fine: riprova o scegli il bonifico"); }
     }).render("#pp-btn");
   }).catch(fallback);
