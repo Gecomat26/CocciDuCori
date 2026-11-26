@@ -99,7 +99,6 @@ nav.main .dd-menu a:hover{background:var(--tint)}
 .school img{width:100%;height:100%;object-fit:cover}
 @media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
 
-
 /* home */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .home{padding-block:clamp(1.5rem,4vw,3.5rem) clamp(1rem,2vw,1.75rem)}
@@ -128,7 +127,6 @@ nav.main .dd-menu a:hover{background:var(--tint)}
 @media (max-width:560px){ .tiles{grid-template-columns:minmax(0,1fr)} .tile{aspect-ratio:1/1} }
 @media (prefers-reduced-motion:reduce){ .tile img{transition:none} }
 
-
 /* negozio */
 section{padding-block:clamp(2.5rem,6vw,5rem)}
 .sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem 2rem;margin-bottom:2rem}
@@ -149,6 +147,8 @@ section{padding-block:clamp(2.5rem,6vw,5rem)}
 .card .row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:.75rem}
 .more{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:2rem;color:var(--muted);font-size:.92rem}
 .price{font:700 1.2rem var(--f-display);font-variant-numeric:tabular-nums}
+.price{white-space:nowrap}
+.price small{font:500 .8rem var(--f-body,inherit);color:var(--muted,#5b6488)}
 
 /* laboratorio */
 .lab{background:var(--tint)}
@@ -257,6 +257,8 @@ footer .legal a{color:inherit}
 .t-item figcaption{display:flex;flex-direction:column;font-size:.9rem;line-height:1.3}
 .t-item figcaption span{color:var(--muted);font-size:.82rem}
 .set{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem;align-items:start}
+.set-one{grid-template-columns:1fr;margin-top:2.5rem}
+.c-sub{margin:2.5rem 0 1rem;font:700 1.35rem var(--f-display)}
 .set-ph{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px}
 .set-form{display:grid;gap:1.25rem}
 .pick{border:0;padding:0;margin:0;min-width:0}
@@ -285,7 +287,7 @@ footer .legal a{color:inherit}
       <div class="dd"><button class="dd-btn" aria-expanded="false" aria-controls="dd-pesci">Pescetti <span aria-hidden="true">▾</span></button>
         <div class="dd-menu" id="dd-pesci" hidden><a href="#orecchini">Gli orecchini</a><a href="#laboratorio">Come nascono i pescetti</a><a href="#materiali">Materiali dei pescetti</a></div></div>
       <div class="dd"><button class="dd-btn" aria-expanded="false" aria-controls="dd-ciocc">Cioccoline <span aria-hidden="true">▾</span></button>
-        <div class="dd-menu" id="dd-ciocc" hidden><a href="#cioccoline">Le cioccoline</a><a href="#cioccoline-come">Come nascono le cioccoline</a><a href="#set-mamma-figlia">Set mamma e figlia</a></div></div>
+        <div class="dd-menu" id="dd-ciocc" hidden><a href="#cioccoline">Le cioccoline</a><a href="#cioccoline-come">Come nascono le cioccoline</a></div></div>
       <a href="#spedizioni">Spedizioni</a>
     </nav>
     <button class="cart-btn" data-action="open-cart" aria-label="Apri il carrello"><svg class="fish" style="width:1.4em"><use href="#fish"/></svg><span class="cl">Carrello</span> <b id="count">0</b></button>
@@ -384,14 +386,38 @@ footer .legal a{color:inherit}
     <div class="wrap">
       <div class="sec-head c-head">
         <div class="c-title"><img class="c-logo" src="img/c-logo.jpg" alt="Bollino Cioccoline, Handmade with Love" width="72" height="72"><h2>Cioccoline</h2></div>
-        <p>Elastici per capelli in tessuto, fatti a mano. Ogni cioccolina arriva in una bustina trasparente con il suo bollino.</p>
+        <p>Elastici per capelli in tessuto, fatti a mano. Si vendono in un&#39;unica formula: una cioccolina per la mamma e una per la figlia, insieme nella stessa bustina trasparente con il bollino, a 10 € in totale (IVA inclusa). Se desideri una cioccolina singola, scrivici a <a href="mailto:cocciducori@gmail.com">cocciducori@gmail.com</a>.</p>
       </div>
-      <div class="grid" id="c-grid"></div>
       <div class="c-worn">
-        <img loading="lazy" src="img/c-worn-1.jpg" alt="Due cioccoline a quadretti rossi e bianchi, una per capelli lunghi di una donna e una per una bambina">
-        <img loading="lazy" src="img/c-worn-2.jpg" alt="Due cioccoline rosa a fiori indossate, in versione grande e piccola">
-        <p>Nelle foto: una cioccolina più grande per i capelli di mamma e una più piccola per quelli di bimba.</p>
+        <img loading="lazy" src="img/c-worn-2.jpg" alt="Due cioccoline rosa a fiori indossate da una mamma e da una bambina, in versione grande e piccola">
+        <img loading="lazy" src="img/c-worn-1.jpg" alt="Due cioccoline a quadretti rossi e bianchi, una per i capelli lunghi di una donna e una per una bambina">
+        <p>Il set mamma e figlia: una cioccolina più grande per i capelli della mamma e una più piccola per quelli della bimba, nella stessa bustina.</p>
       </div>
+      <h3 class="c-sub">Scegli il tessuto del tuo set</h3>
+      <div class="grid" id="c-grid"></div>
+      <p class="note" style="margin-top:1rem;text-align:center">Ogni tessuto qui sopra è un set di due cioccoline, una per mamma e una per figlia, a 10 € in totale. Per una cioccolina singola scrivici a <a href="mailto:cocciducori@gmail.com">cocciducori@gmail.com</a>.</p>
+      <div class="set set-one">
+        <form class="set-form" id="set-form">
+          <fieldset class="pick" data-g="set"><legend>Altri tessuti disponibili per il set.</legend><p class="note" style="margin:0 0 .8rem">Se non trovi il tessuto che cerchi tra i prodotti qui sopra, scegli tra queste altre disponibilità.</p><div class="pick-grid">
+            <label class="pk"><input type="radio" name="tessuto" value="Fiori rosa su beige" required><img loading="lazy" src="img/t-rametti-rosa.jpg" alt="" width="64" height="64"><span>Fiori rosa su beige</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Vichy marrone" required><img loading="lazy" src="img/t-vichy-marrone.jpg" alt="" width="64" height="64"><span>Vichy marrone</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Pois su sabbia" required><img loading="lazy" src="img/t-pois-sabbia.jpg" alt="" width="64" height="64"><span>Pois su sabbia</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Fiorellini verdi su crema" required><img loading="lazy" src="img/t-fiorellini-verdi.jpg" alt="" width="64" height="64"><span>Fiorellini verdi su crema</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Stelle su marrone" required><img loading="lazy" src="img/t-stelle-marrone.jpg" alt="" width="64" height="64"><span>Stelle su marrone</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Fiori di campo viola" required><img loading="lazy" src="img/t-fiori-viola.jpg" alt="" width="64" height="64"><span>Fiori di campo viola</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato bruno" required><img loading="lazy" src="img/t-leopardato-bruno.jpg" alt="" width="64" height="64"><span>Leopardato bruno</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato rosa" required><img loading="lazy" src="img/t-leopardato-rosa.jpg" alt="" width="64" height="64"><span>Leopardato rosa</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato crema" required><img loading="lazy" src="img/t-leopardato-crema.jpg" alt="" width="64" height="64"><span>Leopardato crema</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato grigio" required><img loading="lazy" src="img/t-leopardato-grigio.jpg" alt="" width="64" height="64"><span>Leopardato grigio</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato rosso" required><img loading="lazy" src="img/t-leopardato-rosso.jpg" alt="" width="64" height="64"><span>Leopardato rosso</span></label>
+            <label class="pk"><input type="radio" name="tessuto" value="Leopardato beige" required><img loading="lazy" src="img/t-leopardato-beige.jpg" alt="" width="64" height="64"><span>Leopardato beige</span></label>
+          </div></fieldset>
+          <p class="note" id="set-sum" aria-live="polite">Scegli un tessuto.</p>
+          <button class="btn" type="submit">Aggiungi il set al carrello · 10 €</button>
+          <p class="note">Il set, con due cioccoline in una bustina, costa 10 € in totale, IVA inclusa. I tessuti elencati sono quelli in magazzino: se uno è finito ti avvisiamo e ti proponiamo un'alternativa o ti rimborsiamo.</p>
+        </form>
+      </div>
+
     </div>
   </section>
 
@@ -422,33 +448,6 @@ footer .legal a{color:inherit}
     </div>
   </section>
 
-  <section id="set-mamma-figlia">
-    <div class="wrap">
-      <div class="sec-head"><h2>Set mamma e figlia</h2><p>Ogni bustina contiene due cioccoline da abbinare per mamma e figlia. Per richieste speciali scrivere al laboratorio: <a href="mailto:cocciducori@gmail.com">cocciducori@gmail.com</a></p></div>
-      <div class="set">
-        <img class="set-ph" loading="lazy" src="img/c-worn-2.jpg" alt="Due cioccoline rosa a fiori indossate da una mamma e da una bambina">
-        <form class="set-form" id="set-form">
-          <fieldset class="pick" data-g="set"><legend>Tessuti disponibili per il set.</legend><p class="note" style="margin:0 0 .8rem">Scegli tra i prodotti oppure fra le seguenti disponibilità di tessuti.</p><div class="pick-grid">
-            <label class="pk"><input type="radio" name="tessuto" value="Fiori rosa su beige" required><img loading="lazy" src="img/t-rametti-rosa.jpg" alt="" width="64" height="64"><span>Fiori rosa su beige</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Vichy marrone" required><img loading="lazy" src="img/t-vichy-marrone.jpg" alt="" width="64" height="64"><span>Vichy marrone</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Pois su sabbia" required><img loading="lazy" src="img/t-pois-sabbia.jpg" alt="" width="64" height="64"><span>Pois su sabbia</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Fiorellini verdi su crema" required><img loading="lazy" src="img/t-fiorellini-verdi.jpg" alt="" width="64" height="64"><span>Fiorellini verdi su crema</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Stelle su marrone" required><img loading="lazy" src="img/t-stelle-marrone.jpg" alt="" width="64" height="64"><span>Stelle su marrone</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Fiori di campo viola" required><img loading="lazy" src="img/t-fiori-viola.jpg" alt="" width="64" height="64"><span>Fiori di campo viola</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Leopardato bruno" required><img loading="lazy" src="img/t-leopardato-bruno.jpg" alt="" width="64" height="64"><span>Leopardato bruno</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Leopardato rosa" required><img loading="lazy" src="img/t-leopardato-rosa.jpg" alt="" width="64" height="64"><span>Leopardato rosa</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Leopardato crema" required><img loading="lazy" src="img/t-leopardato-crema.jpg" alt="" width="64" height="64"><span>Leopardato crema</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Leopardato grigio" required><img loading="lazy" src="img/t-leopardato-grigio.jpg" alt="" width="64" height="64"><span>Leopardato grigio</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Leopardato rosso" required><img loading="lazy" src="img/t-leopardato-rosso.jpg" alt="" width="64" height="64"><span>Leopardato rosso</span></label>
-            <label class="pk"><input type="radio" name="tessuto" value="Leopardato beige" required><img loading="lazy" src="img/t-leopardato-beige.jpg" alt="" width="64" height="64"><span>Leopardato beige</span></label>
-          </div></fieldset>
-          <p class="note" id="set-sum" aria-live="polite">Scegli un tessuto.</p>
-          <button class="btn" type="submit">Aggiungi il set al carrello · 10 €</button>
-          <p class="note">Il set, con due cioccoline in una bustina, costa 10 € in totale, IVA inclusa. I tessuti elencati sono quelli in magazzino: se uno è finito ti avvisiamo e ti proponiamo un'alternativa o ti rimborsiamo.</p>
-        </form>
-      </div>
-    </div>
-  </section>
 
   <section class="ship" id="spedizioni">
     <div class="wrap">
@@ -618,10 +617,12 @@ const CIOC = [
 const $ = s => document.querySelector(s);
 const eur = n => new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR"}).format(n);
 const byId = id => {
-  const p = PRODUCTS.find(p => p.id === id) || CIOC.find(p => p.id === id);
+  const p = PRODUCTS.find(p => p.id === id);
   if(p) return p;
+  const c = CIOC.find(p => p.id === id);
+  if(c) return {...c, nome:`Set mamma e figlia: ${c.nome}`, tipo:"2 cioccoline in una bustina"};
   const m = /^set:([^|]+)/.exec(id||"");
-  return m ? {id, nome:`Set mamma e figlia: ${m[1]}`, prezzo:SET_PRICE, img:"img/c-worn-2.jpg", tipo:"Set di 2 cioccoline"} : undefined;
+  return m ? {id, nome:`Set mamma e figlia: ${m[1]}`, prezzo:SET_PRICE, img:"img/c-worn-2.jpg", tipo:"2 cioccoline in una bustina"} : undefined;
 };
 const fishSvg = (cls="") => `<svg class="fish ${cls}"><use href="#fish"/></svg>`;
 const PAGE = 12; let shown = PAGE;
@@ -643,7 +644,7 @@ function renderCioc(){
     return `<article class="card c-card">
       <div class="ph"><img loading="lazy" src="${p.img}" alt="Cioccolina ${p.nome}: ${p.sub.toLowerCase()}"></div>
       <div class="body"><h3>${p.nome}</h3><p class="sub">${p.sub}</p>
-      <div class="row"><span class="price">${eur(p.prezzo)}</span>
+      <div class="row"><span class="price">${eur(p.prezzo)} <small>il set</small></span>
       <button class="btn sm ${inCart?"in-cart":""}" data-action="add" data-id="${p.id}" ${inCart?"disabled":""}>${inCart?"Nel carrello":"Aggiungi"}</button></div></div>
     </article>`;
   }).join("");
